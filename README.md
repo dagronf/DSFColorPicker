@@ -2,7 +2,7 @@
 
 A Swift UI class to display a customizable color picker for macOS.
 
-![](./art/general.gif)
+![](https://dagronf.github.io/art/projects/DSFColorPicker/general.gif)
 
 ## Configuration
 
@@ -10,9 +10,9 @@ A Swift UI class to display a customizable color picker for macOS.
 
 You can configure your control in interface builder completely.  Drop in a custom view, change the custom type to DSFColorView (or an overload) and choose your display theme using the 'Named Theme' setting in the custom types
 
-<img src="./art/interface_builder.png" alt="drawing" width="600"/>
+<img src="https://dagronf.github.io/art/projects/DSFColorPicker/interface_builder.png" alt="drawing" width="600"/>
 
-[Full size](./art/interface_builder.png)
+[Full size](https://dagronf.github.io/art/projects/DSFColorPicker/interface_builder.png)
 
 ### In Code
 
@@ -20,9 +20,9 @@ Configurable using a 2d array of colors, for example
 
 #### A 5x4 grid
 
-<img src="./art/default.png" alt="drawing" width="200"/>
+<img src="https://dagronf.github.io/art/projects/DSFColorPicker/default.png" alt="drawing" width="200"/>
 
-[Full size](./art/default.png)
+[Full size](https://dagronf.github.io/art/projects/DSFColorPicker/default.png)
 
 ```
 	let theme = DSFColorPickerTheme(name: "default", argbValueGrid: [
@@ -36,9 +36,9 @@ Configurable using a 2d array of colors, for example
 
 #### A single row with no recents
 
-<img src="./art/transparency.png" alt="drawing" width="200"/>
+<img src="https://dagronf.github.io/art/projects/DSFColorPicker/transparency.png" alt="drawing" width="200"/>
 
-[Full size](./art/transparency.png)
+[Full size](https://dagronf.github.io/art/projects/DSFColorPicker/transparency.png)
 
 ```
 	let theme = DSFColorPickerTheme(name: "Simple Line", argbValueGrid: [
@@ -61,7 +61,7 @@ The number of recent colors (if shown) is the same as the number of columns in t
 
 Supply a set of themes, and configure the control to display the theme selector.
 
-![](./art/theme_selector.gif)
+![](https://dagronf.github.io/art/projects/DSFColorPicker/theme_selector.gif)
 
 ### Drag and drop support
 
@@ -76,9 +76,9 @@ Automatically adjusts to light and dark modes dynamically
 
 Dynamically adjusts to high-contrast display modes
 
-<img src="./art/popover.png" alt="drawing" width="200"/>
+<img src="https://dagronf.github.io/art/projects/DSFColorPicker/popover.png" alt="drawing" width="200"/>
 
-[Full size](./art/popover.png)
+[Full size](https://dagronf.github.io/art/projects/DSFColorPicker/popover.png)
 
 ### Accessibility support (preliminary)
 

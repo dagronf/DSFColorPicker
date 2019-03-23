@@ -22,6 +22,8 @@
 		2372304A21DF144A0023B729 /* NSColor+dsfextensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2372304921DF144A0023B729 /* NSColor+dsfextensions.swift */; };
 		2372304C21DF17A30023B729 /* DSFColorPickerPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2372304B21DF17A30023B729 /* DSFColorPickerPopover.swift */; };
 		23B84A7621DCB24900289400 /* DSFColorPicker.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2361557F21DB3FF4008ABF4E /* DSFColorPicker.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		23BE2DA52245EC130074E85D /* DSFColorPickerLoupe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BE2DA42245EC130074E85D /* DSFColorPickerLoupe.swift */; };
+		23BE2DA72245F9CF0074E85D /* DSFColorPickerLoupe+icon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23BE2DA62245F9CF0074E85D /* DSFColorPickerLoupe+icon.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -56,6 +58,8 @@
 		2372304621DF12210023B729 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		2372304921DF144A0023B729 /* NSColor+dsfextensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSColor+dsfextensions.swift"; sourceTree = "<group>"; };
 		2372304B21DF17A30023B729 /* DSFColorPickerPopover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DSFColorPickerPopover.swift; sourceTree = "<group>"; };
+		23BE2DA42245EC130074E85D /* DSFColorPickerLoupe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DSFColorPickerLoupe.swift; sourceTree = "<group>"; };
+		23BE2DA62245F9CF0074E85D /* DSFColorPickerLoupe+icon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DSFColorPickerLoupe+icon.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +138,8 @@
 		2372304D21DF1AAA0023B729 /* private */ = {
 			isa = PBXGroup;
 			children = (
+				23BE2DA42245EC130074E85D /* DSFColorPickerLoupe.swift */,
+				23BE2DA62245F9CF0074E85D /* DSFColorPickerLoupe+icon.swift */,
 				2372304921DF144A0023B729 /* NSColor+dsfextensions.swift */,
 				2340192F21DC85FA003E6278 /* DSFColorPickerView+Private.swift */,
 				2325D89C21DC5A4F00622864 /* DSFColorPickerButton+Private.swift */,
@@ -258,6 +264,8 @@
 				2372304A21DF144A0023B729 /* NSColor+dsfextensions.swift in Sources */,
 				2372304C21DF17A30023B729 /* DSFColorPickerPopover.swift in Sources */,
 				2340193021DC85FA003E6278 /* DSFColorPickerView+Private.swift in Sources */,
+				23BE2DA72245F9CF0074E85D /* DSFColorPickerLoupe+icon.swift in Sources */,
+				23BE2DA52245EC130074E85D /* DSFColorPickerLoupe.swift in Sources */,
 				2325D89D21DC5A4F00622864 /* DSFColorPickerButton+Private.swift in Sources */,
 				2361558B21DB4004008ABF4E /* DSFColorPickerView.swift in Sources */,
 				234A433821DB448D0036F4C2 /* DSFColorPickerThemes.swift in Sources */,

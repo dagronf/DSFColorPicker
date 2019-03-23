@@ -21,6 +21,13 @@
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
+//  Usage: 
+//		DSFColorPickerLoupe.shared.pick { (selectedColor) in
+//			if let color = selectedColor {
+//				self.color.color = color
+//			}
+//		}
+
 import Foundation
 
 extension NSColor

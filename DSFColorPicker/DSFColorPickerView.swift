@@ -29,6 +29,10 @@ import Cocoa
 {
 	static let defaultThemes = DSFColorPickerThemes()
 
+//	open override func acceptsFirstMouse(for event: NSEvent?) -> Bool {
+//		return true
+//	}
+
 	// MARK: - Notification definitions and callbacks
 
 	public class ColorNotification
@@ -68,6 +72,9 @@ import Cocoa
 
 	/// Show or hide the titles in the control
 	@IBInspectable public var showTitles: Bool = true
+
+	/// Show or hide the color dropper
+	@IBInspectable public var showColorDropper: Bool = true
 
 	/// Cell width and height
 	@IBInspectable public var cellWidth: CGFloat = 30

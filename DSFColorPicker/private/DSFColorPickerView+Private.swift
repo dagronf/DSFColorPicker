@@ -25,7 +25,6 @@ import Cocoa
 
 extension DSFColorPickerView
 {
-
 	public class DFColorPickerStack: NSStackView, NSAccessibilityGroup
 	{
 		override init(frame frameRect: NSRect)
@@ -101,12 +100,11 @@ fileprivate extension DSFColorPickerView
 		self.recentColors.insert(color, at: 0)
 		self.recentColors = Array(self.recentColors.prefix(self.colCount))
 
-		var count = 0
-		for button in self.recentColorButtons
-		{
-			button.color = self.recentColors[count]
-			count += 1
+		self.recentColorButtons.enumerated().forEach
+			{
+				$0.element.color = self.recentColors[$0.offset]
 		}
+
 		self.saveRecents()
 	}
 
@@ -159,10 +157,11 @@ extension DSFColorPickerView
 		self.colorPickerStack.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
 		self.colorPickerStack.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
 
-		NotificationCenter.default.addObserver(self,
-											   selector: #selector(self.themeChanged(_:)),
-											   name: NSNotification.Name("AppleInterfaceThemeChangedNotification"),
-											   object: nil)
+		NotificationCenter.default.addObserver(
+			self,
+			selector: #selector(self.themeChanged(_:)),
+			name: NSNotification.Name("AppleInterfaceThemeChangedNotification"),
+			object: nil)
 	}
 
 	@objc func themeChanged(_ notification: Notification)
@@ -270,8 +269,13 @@ extension DSFColorPickerView
 	}
 
 	/// Set up the button style for the 'currently selected' color button
-	private func configureCurrent() -> NSButton
+	private func configureCurrent() -> NSStackView
 	{
+		let hStack = NSStackView()
+		hStack.translatesAutoresizingMaskIntoConstraints = false
+		hStack.orientation = .horizontal
+		hStack.spacing = 4.0
+
 		let button = DSFColorPickerButton(frame: NSMakeRect(0, 0, self.cellWidth, self.cellHeight))
 		button.title = ""
 		button.bezelStyle = .texturedSquare
@@ -291,10 +295,30 @@ extension DSFColorPickerView
 
 		button.setContentHuggingPriority(NSLayoutConstraint.Priority.fittingSizeCompression,
 										 for: .horizontal)
-
 		self.selectedColorButton = button
+		hStack.addArrangedSubview(button)
 
-		return button
+		if showColorDropper
+		{
+			let picker = NSButton()
+			picker.translatesAutoresizingMaskIntoConstraints = false
+			picker.isBordered = false
+			picker.image = NSImage(cgImage: colorPickerIconImage(), size: NSSize(width: 16, height: 16))
+			picker.image!.isTemplate = true
+			picker.action = #selector(self.colorPicker(_:))
+			picker.target = self
+			hStack.addArrangedSubview(picker)
+		}
+
+		return hStack
+	}
+
+	@objc func colorPicker(_ sender: Any)
+	{
+		DSFColorPickerLoupe.shared.pick { selectedColor in
+			self.selectedColor = selectedColor
+			self.updateRecents(selectedColor)
+		}
 	}
 
 	private func configureThemeChooser() -> NSPopUpButton

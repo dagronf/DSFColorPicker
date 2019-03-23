@@ -24,7 +24,7 @@ Configurable using a 2d array of colors, for example
 
 [Full size](https://dagronf.github.io/art/projects/DSFColorPicker/default.png)
 
-```
+```swift
 	let theme = DSFColorPickerTheme(name: "default", argbValueGrid: [
 		[0xF5402C, 0xEB1360, 0x9C1BB1, 0x6634B8, 0x3D4DB7],
 		[0x47AE4A, 0x009687, 0x01BBD5, 0x00A6F6, 0x0C93F5],
@@ -40,7 +40,7 @@ Configurable using a 2d array of colors, for example
 
 [Full size](https://dagronf.github.io/art/projects/DSFColorPicker/transparency.png)
 
-```
+```swift
 	let theme = DSFColorPickerTheme(name: "Simple Line", argbValueGrid: [
 		[0xE0BA4240, 0xE0F0C976, 0xE096A873, 0xE089C9B8, 0xE0AFE6E4, 0xE07AA3C0, 0xE08B719F, 0xE0DB849A]]
 	)

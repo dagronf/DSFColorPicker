@@ -840,6 +840,7 @@
                                                 <userDefinedRuntimeAttribute type="number" keyPath="verticalSpacing">
                                                     <real key="value" value="5"/>
                                                 </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="showColorDropper" value="NO"/>
                                             </userDefinedRuntimeAttributes>
                                         </customView>
                                     </subviews>

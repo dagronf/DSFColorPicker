@@ -26,24 +26,29 @@ import Cocoa
 import DSFColorPicker
 
 @NSApplicationMain
-class AppDelegate: NSObject, NSApplicationDelegate, NSPopoverDelegate
-{
-	@IBOutlet weak var window: NSWindow!
+class AppDelegate: NSObject, NSApplicationDelegate, NSPopoverDelegate {
+	@IBOutlet var window: NSWindow!
 
-	@IBOutlet weak var colorPickerView: DSFColorPickerView!
-	@IBOutlet weak var colorPickerViewSelectedColorWell: NSColorWell!
-	@IBOutlet weak var colorPickerByNotificationColorWell: NSColorWell!
-	@IBOutlet weak var syncedColor: NSColorWell!
+	@IBOutlet var colorPickerView: DSFColorPickerView!
+	@IBOutlet var colorPickerViewSelectedColorWell: NSColorWell!
+	@IBOutlet var colorPickerByNotificationColorWell: NSColorWell!
+	@IBOutlet var syncedColor: NSColorWell!
 
-	@IBOutlet weak var second: DSFColorPickerView!
-	@IBOutlet weak var third: DSFColorPickerView!
+	@IBOutlet var second: DSFColorPickerView!
+	@IBOutlet var third: DSFColorPickerView!
 
-	@IBOutlet weak var changeable: CustomPickerView!
-	
+	@IBOutlet var changeable: CustomPickerView!
+
+	@objc var showThemes: Bool = true
+	@objc var showRecents: Bool = true
+	@objc var showCurrent: Bool = true
+	@objc var showTitles: Bool = true
+	@objc var showPicker: Bool = true
+
 	// For testing popover support
 	public var popover: DSFColorPickerPopover = DSFColorPickerPopover()
 
-	func applicationDidFinishLaunching(_ aNotification: Notification) {
+	func applicationDidFinishLaunching(_: Notification) {
 		// Insert code here to initialize your application
 
 		// Need to set this, or else drag/drop loses alpha
@@ -59,38 +64,37 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSPopoverDelegate
 		self.colorPickerByNotificationColorWell.color = NSColor.clear
 		NotificationCenter.default.addObserver(forName: DSFColorPickerView.colorSelectedNotification,
 											   object: self.colorPickerView,
-											   queue: nil)
-		{ [weak self] (notification) in
-			if let dict = notification.userInfo,
-				let color = dict[DSFColorPickerView.ColorNotification.selectedColor] as? NSColor?
-			{
-				self?.colorPickerByNotificationColorWell.color = color!
-			}
+											   queue: nil) { [weak self] notification in
+												if let dict = notification.userInfo,
+													let color = dict[DSFColorPickerView.ColorNotification.selectedColor] as? NSColor? {
+													self?.colorPickerByNotificationColorWell.color = color!
+												}
 		}
 	}
 
-	@IBAction func userDidChangeSyncColor(_ sender: NSColorWell)
-	{
+	@IBAction func userDidChangeSyncColor(_ sender: NSColorWell) {
 		self.colorPickerView.selectedColor = sender.color
 	}
 
-	func applicationWillTerminate(_ aNotification: Notification)
-	{
+	func applicationWillTerminate(_: Notification) {
 		// Insert code here to tear down your application
 		NotificationCenter.default.removeObserver(self)
 	}
 
-	@IBAction func showPopover(_ sender: NSButton)
-	{
+	@IBAction func showPopover(_ sender: NSButton) {
 		let ps = DefaultPickerViewThemes()
-		if let theme = ps.theme(named: "default")
-		{
+		if let theme = ps.theme(named: "default") {
 			self.popover.showPopover(
 				named: "popover1",
 				theme: theme,
+				showThemes: self.showThemes,
+				showCurrent: self.showCurrent,
+				showRecents: self.showRecents,
+				showTitles: self.showTitles,
+				showColorDropper: self.showPicker,
 				sender: sender,
-				preferredEdge: .maxX)
+				preferredEdge: .maxX
+			)
 		}
 	}
-
 }

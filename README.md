@@ -4,6 +4,15 @@ A Swift UI class to display a customizable color picker for macOS.
 
 ![](https://dagronf.github.io/art/projects/DSFColorPicker/general.gif)
 
+### Features
+
+* Themable, allow your users to change between provided themes.
+* Configurable color palettes
+* Configurable in Interface Builder or by code.
+* Color picker support to allow selecting a color from the screen
+* Configurable recent colors support
+* Drag and drop support
+
 ## Configuration
 
 ### Interface builder

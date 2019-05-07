@@ -48,7 +48,15 @@ public class DSFColorPickerPopover: NSObject, NSPopoverDelegate {
 		}
 	}
 
-	public func showPopover(named name: String, theme: DSFColorPickerTheme, sender: NSView, preferredEdge: NSRectEdge) {
+	public func showPopover(
+		named name: String, theme: DSFColorPickerTheme,
+		showThemes: Bool = false,
+		showCurrent: Bool = true,
+		showRecents: Bool = true,
+		showTitles: Bool = true,
+		showColorDropper: Bool = true,
+		sender: NSView, preferredEdge: NSRectEdge) {
+
 		if let openPopover = self.popover {
 			openPopover.close()
 			self.popover = nil
@@ -58,7 +66,17 @@ public class DSFColorPickerPopover: NSObject, NSPopoverDelegate {
 
 		let viewController = DSFColorPickerPopoverViewController()
 		viewController.configure(name: name)
-		viewController.colorView?.selectedTheme = theme
+		guard let vc = viewController.colorView else {
+			assert(false)
+		}
+
+		vc.selectedTheme = theme
+		vc.showThemes = showThemes
+		vc.showCurrent = showCurrent
+		vc.showRecents = showRecents
+		vc.showTitles = showTitles
+		vc.showColorDropper = showColorDropper
+		vc.updateLayoutForTheme()
 
 		self.popover?.contentViewController = viewController
 		self.popover?.behavior = .semitransient

@@ -177,6 +177,14 @@ extension DSFColorPickerView {
 			self.colorPickerStack.addArrangedSubview(popover)
 		}
 
+		if !self.showTitles {
+			// Give a little more breathing room in the stack
+			self.colorPickerStack.spacing = 8
+		}
+		else {
+			self.colorPickerStack.spacing = 2
+		}
+
 		if self.showCurrent {
 			if self.showTitles {
 				self.colorPickerStack.addArrangedSubview(self.configureLabel(selColorLabel))
@@ -194,6 +202,7 @@ extension DSFColorPickerView {
 				self.colorPickerStack.addArrangedSubview(self.configureLabel(preColorLabel))
 			} else {
 				let box = NSBox(frame: NSRect(x: 0, y: 0, width: 20, height: 1))
+				box.translatesAutoresizingMaskIntoConstraints = false
 				box.boxType = .separator
 				self.colorPickerStack.addArrangedSubview(box)
 			}
@@ -265,16 +274,32 @@ extension DSFColorPickerView {
 		self.selectedColorButton = button
 		hStack.addArrangedSubview(button)
 
+		// If we need to show the color picker, do it here.
 		if showColorDropper {
+			let fixedSize = CGSize(width: 16, height: 16)
 			let picker = NSButton()
 			picker.translatesAutoresizingMaskIntoConstraints = false
 			picker.isBordered = false
-			picker.image = NSImage(cgImage: colorPickerIconImage(), size: NSSize(width: 16, height: 16))
+			picker.image = NSImage(cgImage: colorPickerIconImage(), size: fixedSize)
 			picker.image!.isTemplate = true
 			picker.action = #selector(self.colorPicker(_:))
 			picker.target = self
-			picker.toolTip = NSLocalizedString("Pick a color on the screen", comment: "Displays a color loupe to allow the user to select a color on the screen")
+			picker.toolTip =
+				NSLocalizedString(
+					"Pick a color on the screen",
+					comment: "Displays a color loupe to allow the user to select a color on the screen")
 			hStack.addArrangedSubview(picker)
+
+			let c1 = NSLayoutConstraint.init(
+				item: picker, attribute: .width, relatedBy: .equal,
+				toItem: nil, attribute: .notAnAttribute,
+				multiplier: 1, constant: fixedSize.width)
+			let c2 = NSLayoutConstraint.init(
+				item: picker, attribute: .height, relatedBy: .equal,
+				toItem: nil, attribute: .notAnAttribute,
+				multiplier: 1, constant: fixedSize.height)
+			picker.addConstraints([c1, c2])
+			picker.needsLayout = true
 		}
 
 		return hStack

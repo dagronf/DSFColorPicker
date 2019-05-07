@@ -41,11 +41,10 @@
 //	)
 //
 
-import Cocoa
 import Carbon.HIToolbox
+import Cocoa
 
 public class DSFColorPickerLoupe: NSObject {
-
 	public static var shared = DSFColorPickerLoupe()
 
 	public typealias LocationChangedBlock = (_ currentImage: NSImage, NSColor) -> Void
@@ -70,20 +69,23 @@ private extension DSFColorPickerLoupe {
 			contentRect: NSRect(x: 0, y: 0, width: 125, height: 125),
 			styleMask: .borderless,
 			backing: .buffered,
-			defer: true)
+			defer: true
+		)
 		self.screenPickerWindow!.delegate = self
 
 		NotificationCenter.default.addObserver(
 			self,
 			selector: #selector(windowDidBecomeKey(_:)),
 			name: NSWindow.didBecomeKeyNotification,
-			object: self.screenPickerWindow)
+			object: self.screenPickerWindow
+		)
 
 		NotificationCenter.default.addObserver(
 			self,
 			selector: #selector(windowDidResignKey(_:)),
 			name: NSWindow.didResignKeyNotification,
-			object: self.screenPickerWindow)
+			object: self.screenPickerWindow
+		)
 
 		NSApplication.shared.activate(ignoringOtherApps: true)
 		self.screenPickerWindow!.makeKeyAndOrderFront(self)
@@ -101,12 +103,12 @@ private extension DSFColorPickerLoupe {
 }
 
 extension DSFColorPickerLoupe: DSFColorPickerLoupeDelegate {
-	fileprivate func window(_ window: DSFColorPickerLoupeWindow, clickedAtPoint point: CGPoint, withColor: NSColor) {
+	fileprivate func window(_: DSFColorPickerLoupeWindow, clickedAtPoint _: CGPoint, withColor: NSColor) {
 		self.completionBlock?(withColor)
 		self.reset()
 	}
 
-	fileprivate func window(_ window: DSFColorPickerLoupeWindow, moveToPoint point: CGPoint, withImage: NSImage, color: NSColor) {
+	fileprivate func window(_: DSFColorPickerLoupeWindow, moveToPoint _: CGPoint, withImage: NSImage, color: NSColor) {
 		self.locationChangedBlock?(withImage, color)
 	}
 
@@ -125,7 +127,7 @@ extension DSFColorPickerLoupe: DSFColorPickerLoupeDelegate {
 	}
 }
 
-// MARK:- DSFColorPickerLoupeWindow
+// MARK: - DSFColorPickerLoupeWindow
 
 private protocol DSFColorPickerLoupeDelegate: NSWindowDelegate {
 	func window(_ window: DSFColorPickerLoupeWindow, clickedAtPoint point: CGPoint, withColor: NSColor)
@@ -133,7 +135,6 @@ private protocol DSFColorPickerLoupeDelegate: NSWindowDelegate {
 }
 
 private class DSFColorPickerLoupeWindow: NSWindow {
-
 	private var pixelZoom: CGFloat = 7
 
 	var _image: CGImage?
@@ -146,11 +147,12 @@ private class DSFColorPickerLoupeWindow: NSWindow {
 		return true
 	}
 
-	override public init(
+	public override init(
 		contentRect: NSRect,
 		styleMask style: NSWindow.StyleMask,
 		backing backingStoreType: NSWindow.BackingStoreType,
-		defer flag: Bool) {
+		defer flag: Bool
+	) {
 		super.init(contentRect: contentRect, styleMask: style, backing: backingStoreType, defer: flag)
 
 		self.isOpaque = false
@@ -158,11 +160,11 @@ private class DSFColorPickerLoupeWindow: NSWindow {
 		self.level = .popUpMenu
 		self.ignoresMouseEvents = false
 
-		let captureView = DSFColorPickerLoupeView.init(frame: self.frame)
+		let captureView = DSFColorPickerLoupeView(frame: self.frame)
 		self.contentView = captureView
 	}
 
-	override open func mouseMoved(with event: NSEvent) {
+	open override func mouseMoved(with event: NSEvent) {
 		let point = NSEvent.mouseLocation
 
 		var count: UInt32 = 0
@@ -172,10 +174,10 @@ private class DSFColorPickerLoupeWindow: NSWindow {
 			return
 		}
 
-		let captureSize: CGFloat = self.frame.size.width / pixelZoom
+		let captureSize: CGFloat = self.frame.size.width / self.pixelZoom
 		let screenFrame: NSRect = NSScreen.main!.frame
-		let x: CGFloat = floor(point.x) - floor(captureSize / 2);
-		let y: CGFloat = screenFrame.size.height - floor(point.y) - floor(captureSize / 2);
+		let x: CGFloat = floor(point.x) - floor(captureSize / 2)
+		let y: CGFloat = screenFrame.size.height - floor(point.y) - floor(captureSize / 2)
 
 		let windowID = CGWindowID(self.windowNumber)
 
@@ -183,8 +185,9 @@ private class DSFColorPickerLoupeWindow: NSWindow {
 			CGRect(x: x, y: y, width: captureSize, height: captureSize),
 			.optionOnScreenBelowWindow,
 			windowID,
-			.nominalResolution) else {
-				return
+			.nominalResolution
+		) else {
+			return
 		}
 		self._image = image
 
@@ -195,7 +198,10 @@ private class DSFColorPickerLoupeWindow: NSWindow {
 			}
 		}
 
-		let origin = NSPoint(x: floor(point.x) - floor(self.frame.size.width / 2), y: floor(point.y) - floor(self.frame.size.height / 2))
+		let origin = NSPoint(
+			x: floor(point.x) - floor(self.frame.size.width / 2),
+			y: floor(point.y) - floor(self.frame.size.height / 2)
+		)
 		self.setFrameOrigin(origin)
 
 		let captureView = self.contentView as! DSFColorPickerLoupeView
@@ -205,7 +211,7 @@ private class DSFColorPickerLoupeWindow: NSWindow {
 		super.mouseMoved(with: event)
 	}
 
-	override open func mouseDown(with event: NSEvent) {
+	open override func mouseDown(with _: NSEvent) {
 		let point = NSEvent.mouseLocation
 		let f = self.frame
 		if NSPointInRect(point, f) {
@@ -218,16 +224,15 @@ private class DSFColorPickerLoupeWindow: NSWindow {
 		}
 	}
 
-	override open func scrollWheel(with event: NSEvent) {
+	open override func scrollWheel(with event: NSEvent) {
 		if event.deltaY > 0.01 {
-			pixelZoom += 1
+			self.pixelZoom += 1
+		} else if event.deltaY < -0.01 {
+			self.pixelZoom -= 1
 		}
-		else if event.deltaY < -0.01 {
-			pixelZoom -= 1
-		}
-		pixelZoom = pixelZoom.clamped(to: 2...24)
+		self.pixelZoom = self.pixelZoom.clamped(to: 2 ... 24)
 
-		(self.contentView as? DSFColorPickerLoupeView)?.pixelZoom = pixelZoom
+		(self.contentView as? DSFColorPickerLoupeView)?.pixelZoom = self.pixelZoom
 
 		self.mouseMoved(with: event)
 
@@ -239,24 +244,21 @@ private class DSFColorPickerLoupeWindow: NSWindow {
 			self.orderOut(self)
 		}
 	}
-
 }
 
-// MARK:- DSFColorPickerLoupeView
+// MARK: - DSFColorPickerLoupeView
 
 private class DSFColorPickerLoupeView: NSView {
-
 	var pixelZoom: CGFloat = 7
 	var _image: CGImage?
 
-	override func draw(_ dirtyRect: NSRect) {
-
+	override func draw(_: NSRect) {
 		guard let context = NSGraphicsContext.current?.cgContext else {
 			fatalError()
 		}
 
 		// Clear the drawing rect.
-		context.clear(self.bounds);
+		context.clear(self.bounds)
 
 		let rect = self.bounds
 
@@ -277,23 +279,28 @@ private class DSFColorPickerLoupeView: NSView {
 		}
 
 		// draw the aperture
-		let apertureSize: CGFloat = pixelZoom
+		let apertureSize: CGFloat = self.pixelZoom
 		let x: CGFloat = (width / 2.0) - (apertureSize / 2.0)
 		let y: CGFloat = (height / 2.0) - (apertureSize / 2.0)
 
 		let apertureRect = CGRect(x: x, y: y, width: apertureSize, height: apertureSize)
-		context.setStrokeColor(red: 0, green: 0, blue: 0, alpha: 1)
+		context.setStrokeColor(NSColor.textColor.cgColor)
 		context.setShouldAntialias(false)
 		context.stroke(apertureRect)
+		context.setStrokeColor(NSColor.textBackgroundColor.cgColor)
+		context.stroke(apertureRect.insetBy(dx: -1.0, dy: -1.0))
 
 		// stroke outer circle
 		context.setShouldAntialias(true)
-		context.setLineWidth(2.0)
+		context.setLineWidth(1.0)
+		context.setStrokeColor(NSColor.textColor.cgColor)
+		context.strokeEllipse(in: rect.insetBy(dx: 1.0, dy: 1.0))
+		context.setStrokeColor(NSColor.textBackgroundColor.cgColor)
 		context.strokeEllipse(in: rect)
 	}
 }
 
-// MARK:- Extensions
+// MARK: - Extensions
 
 private extension NSColor {
 	func usingColorspace(_ colorspace: NSColorSpace) -> NSColor {

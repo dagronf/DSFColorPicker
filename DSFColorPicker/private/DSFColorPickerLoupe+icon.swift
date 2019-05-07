@@ -23,11 +23,12 @@
 
 import Cocoa
 
+/// Icon generated using PaintCode
+
 func colorPickerIconImage() -> CGImage {
 	let gc = CGContext(data: nil, width: 96, height: 96, bitsPerComponent: 8, bytesPerRow: 0, space: CGColorSpace(name: CGColorSpace.sRGB)!, bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue)!
 	let nsGc = NSGraphicsContext(cgContext: gc, flipped: false)
 	NSGraphicsContext.current = nsGc; do {
-
 		//// Color Declarations
 		let fillColor = NSColor(red: 0, green: 0, blue: 0, alpha: 1)
 		let color = NSColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 1)

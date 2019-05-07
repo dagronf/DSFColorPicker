@@ -25,18 +25,15 @@ import Foundation
 
 // MARK: - Color picker
 
-public class DSFColorPickerPopover: NSObject, NSPopoverDelegate
-{
+public class DSFColorPickerPopover: NSObject, NSPopoverDelegate {
 	public var popover: NSPopover?
 
 	var controller: DSFColorPickerPopoverViewController?
 
-	class DSFColorPickerPopoverViewController: NSViewController
-	{
+	class DSFColorPickerPopoverViewController: NSViewController {
 		var colorView: DSFColorPickerView?
 
-		func configure(name: String)
-		{
+		func configure(name: String) {
 			self.view = NSView()
 			self.view.translatesAutoresizingMaskIntoConstraints = false
 
@@ -51,10 +48,8 @@ public class DSFColorPickerPopover: NSObject, NSPopoverDelegate
 		}
 	}
 
-	public func showPopover(named name: String, theme: DSFColorPickerTheme, sender: NSView, preferredEdge: NSRectEdge)
-	{
-		if let openPopover = self.popover
-		{
+	public func showPopover(named name: String, theme: DSFColorPickerTheme, sender: NSView, preferredEdge: NSRectEdge) {
+		if let openPopover = self.popover {
 			openPopover.close()
 			self.popover = nil
 		}
@@ -74,8 +69,7 @@ public class DSFColorPickerPopover: NSObject, NSPopoverDelegate
 		self.popover?.show(relativeTo: sender.bounds, of: sender, preferredEdge: preferredEdge)
 	}
 
-	public func popoverDidClose(_ notification: Notification)
-	{
+	public func popoverDidClose(_: Notification) {
 		self.popover = nil
 	}
 }

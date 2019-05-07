@@ -25,8 +25,7 @@ import Cocoa
 
 // MARK: - Color picker view
 
-@IBDesignable open class DSFColorPickerView: NSView
-{
+@IBDesignable open class DSFColorPickerView: NSView {
 	static let defaultThemes = DSFColorPickerThemes()
 
 //	open override func acceptsFirstMouse(for event: NSEvent?) -> Bool {
@@ -35,8 +34,7 @@ import Cocoa
 
 	// MARK: - Notification definitions and callbacks
 
-	public class ColorNotification
-	{
+	public class ColorNotification {
 		public static let name = "DSFColorPickerViewColorSelected"
 		public static let selectedColor = "selectedColor"
 	}
@@ -50,10 +48,8 @@ import Cocoa
 	// MARK: - Inspectable properties
 
 	/// String identifier, used for voiceover to identify which picker is selected
-	@IBInspectable public var name: String = ""
-	{
-		didSet
-		{
+	@IBInspectable public var name: String = "" {
+		didSet {
 			self.colorPickerStack.setName(name: self.name)
 		}
 	}
@@ -87,30 +83,24 @@ import Cocoa
 	// MARK: - Modifiable properties
 
 	/// The theme being used for the picker.  If nil, uses the default built-in theme
-	public var selectedTheme: DSFColorPickerTheme?
-	{
-		didSet
-		{
+	public var selectedTheme: DSFColorPickerTheme? {
+		didSet {
 			self.updateLayoutForTheme()
 		}
 	}
 
-	public var colCount: Int
-	{
+	public var colCount: Int {
 		// Theme dictates the number of columns
 		return self.selectedTheme?.colCount ?? 0
 	}
 
-	public var rowCount: Int
-	{
+	public var rowCount: Int {
 		// Theme dictates the number of rows
 		return self.selectedTheme?.rowCount ?? 0
 	}
 
-	@objc public var selectedColor: NSColor?
-	{
-		didSet
-		{
+	@objc public var selectedColor: NSColor? {
+		didSet {
 			self.selectedColorButton?.color = self.selectedColor
 			self.selectedColorButton?.isEnabled = self.selectedColor != nil
 
@@ -118,9 +108,11 @@ import Cocoa
 			self.colorSelectedCallback?(self.selectedColor)
 
 			/// Tell anyone that we've changed
-			NotificationCenter.default.post(name: DSFColorPickerView.colorSelectedNotification,
-											object: self,
-											userInfo: [ColorNotification.selectedColor: self.selectedColor as Any])
+			NotificationCenter.default.post(
+				name: DSFColorPickerView.colorSelectedNotification,
+				object: self,
+				userInfo: [ColorNotification.selectedColor: self.selectedColor as Any]
+			)
 
 			self.syncButtonsWithSelection()
 		}
@@ -140,14 +132,12 @@ import Cocoa
 	///
 	var allColorButtons: [DSFColorPickerButton] = []
 
-	override init(frame frameRect: NSRect)
-	{
+	override init(frame frameRect: NSRect) {
 		super.init(frame: frameRect)
 		self.setup()
 	}
 
-	public required init?(coder decoder: NSCoder)
-	{
+	public required init?(coder decoder: NSCoder) {
 		super.init(coder: decoder)
 		self.setup()
 	}

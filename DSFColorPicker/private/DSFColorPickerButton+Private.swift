@@ -25,51 +25,40 @@ import Cocoa
 
 // Internal class used by the color picker view
 
-class DSFColorPickerButton: NSButton
-{
+class DSFColorPickerButton: NSButton {
 	private var stateObserver: NSKeyValueObservation?
-	var showSelected: Bool = false
-	{
-		didSet
-		{
-			if self.showSelected
-			{
-				self.stateObserver = self.observe(\.cell?.state, options: [.new])
-				{ _, state in
+	var showSelected: Bool = false {
+		didSet {
+			if self.showSelected {
+				self.stateObserver = self.observe(\.cell?.state, options: [.new]) { _, state in
 					self.drawLayer?.selected = state.newValue == .on
 					self.setNeedsDisplay()
 				}
-			}
-			else
-			{
+			} else {
 				self.stateObserver = nil
 			}
 		}
 	}
 
-	fileprivate class Color
-	{
+	fileprivate class Color {
 		let color: CGColor?
 		let border: CGColor
 		let selectedBorder: CGColor
 		let pressed: CGColor?
 
-		init(color: NSColor?, border: NSColor, selectedBorder: NSColor)
-		{
+		init(color: NSColor?, border: NSColor, selectedBorder _: NSColor) {
 			self.color = color?.cgColor
 			self.border = border.cgColor
 			self.selectedBorder = color?.flatContrastColor().cgColor ?? border.cgColor
 			self.pressed = color?.darker().cgColor
 		}
 
-		func emptyColor() -> Bool
-		{
+		func emptyColor() -> Bool {
 			return self.color == nil
 		}
 	}
 
-	fileprivate class Layer: CAShapeLayer
-	{
+	fileprivate class Layer: CAShapeLayer {
 		let colorLayer: CAShapeLayer
 		let triangleLayer: CAShapeLayer
 		let opacityLayer: CAShapeLayer
@@ -79,23 +68,17 @@ class DSFColorPickerButton: NSButton
 		var isPressed: Bool = false
 
 		var isSelectedForDrop: Bool = false
-		var selected: Bool = false
-		{
-			didSet
-			{
-				if self.selected
-				{
+		var selected: Bool = false {
+			didSet {
+				if self.selected {
 					self.addSublayer(self.selectedLayer)
-				}
-				else
-				{
+				} else {
 					self.selectedLayer.removeFromSuperlayer()
 				}
 			}
 		}
 
-		init(layer: Any, color: DSFColorPickerButton.Color)
-		{
+		init(layer: Any, color: DSFColorPickerButton.Color) {
 			self.triangleLayer = CAShapeLayer()
 			self.colorLayer = CAShapeLayer()
 			self.dropLayer = CAShapeLayer()
@@ -108,27 +91,22 @@ class DSFColorPickerButton: NSButton
 			self.addSublayer(self.triangleLayer)
 			self.addSublayer(self.dropLayer)
 
-			self.configure(color: color,
-						   frame: (layer as! CALayer).frame)
+			self.configure(color: color, frame: (layer as! CALayer).frame)
 		}
 
-		required init?(coder aDecoder: NSCoder)
-		{
+		required init?(coder _: NSCoder) {
 			fatalError("init(coder:) has not been implemented")
 		}
 
-		func configure(color: DSFColorPickerButton.Color, frame: NSRect)
-		{
+		func configure(color: DSFColorPickerButton.Color, frame: NSRect) {
 			let inset: CGFloat = 3
 			var contentFrame = frame
 
-			if self.isSelectedForDrop
-			{
+			if self.isSelectedForDrop {
 				contentFrame = contentFrame.insetBy(dx: inset, dy: inset)
 			}
 
-			if !color.emptyColor()
-			{
+			if !color.emptyColor() {
 				self.opacityLayer.frame = frame
 
 				let tp = CGMutablePath()
@@ -148,14 +126,13 @@ class DSFColorPickerButton: NSButton
 			self.colorLayer.lineWidth = 1.0
 
 			self.triangleLayer.isHidden = !color.emptyColor()
-			if color.emptyColor()
-			{
+			if color.emptyColor() {
 				let offset: CGFloat = self.isSelectedForDrop ? inset : 0
 
 				self.triangleLayer.frame = frame
 
 				let tp = CGMutablePath()
-				let triangleHeight = min((contentFrame.height / 3), 12)
+				let triangleHeight = min(contentFrame.height / 3, 12)
 				tp.move(to: NSPoint(x: contentFrame.width + offset - 1, y: triangleHeight + offset))
 				tp.addLine(to: NSPoint(x: contentFrame.width + offset - triangleHeight, y: 1 + offset))
 				tp.addLine(to: NSPoint(x: contentFrame.width + offset - 1, y: 1 + offset))
@@ -175,8 +152,7 @@ class DSFColorPickerButton: NSButton
 			self.selectedLayer.lineWidth = 1.0
 
 			self.dropLayer.isHidden = !self.isSelectedForDrop
-			if self.isSelectedForDrop
-			{
+			if self.isSelectedForDrop {
 				self.dropLayer.frame = frame
 				self.dropLayer.path = CGPath(rect: frame, transform: nil)
 				self.dropLayer.strokeColor = NSColor.systemRed.cgColor
@@ -192,38 +168,31 @@ class DSFColorPickerButton: NSButton
 
 	var startDragPoint: NSPoint?
 	var canDrop: Bool = false
-	var isDrop: Bool = false
-	{
-		didSet
-		{
+	var isDrop: Bool = false {
+		didSet {
 			self.drawLayer?.isSelectedForDrop = self.isDrop
 			self.setNeedsDisplay()
 		}
 	}
 
-	var color: NSColor?
-	{
-		didSet
-		{
+	var color: NSColor? {
+		didSet {
 			self.isEnabled = self.color != nil
 			self.setNeedsDisplay()
 		}
 	}
 
-	override init(frame frameRect: NSRect)
-	{
+	override init(frame frameRect: NSRect) {
 		super.init(frame: frameRect)
 		self.setup()
 	}
 
-	required init?(coder: NSCoder)
-	{
+	required init?(coder: NSCoder) {
 		super.init(coder: coder)
 		self.setup()
 	}
 
-	func setup()
-	{
+	func setup() {
 		self.wantsLayer = true
 		self.focusRingType = .default
 		self.isBordered = false
@@ -231,14 +200,15 @@ class DSFColorPickerButton: NSButton
 		let buttonColor = DSFColorPickerButton.Color(
 			color: self.color,
 			border: self.borderColor(),
-			selectedBorder: self.selectedBorderColor())
+			selectedBorder: self.selectedBorderColor()
+		)
 
 		self.drawLayer = DSFColorPickerButton.Layer(
 			layer: self.layer!,
-			color: buttonColor)
+			color: buttonColor
+		)
 
-		if let drawer = self.drawLayer
-		{
+		if let drawer = self.drawLayer {
 			drawer.frame = self.layer!.bounds
 			self.layer?.addSublayer(drawer)
 			drawer.setNeedsDisplay()
@@ -246,88 +216,69 @@ class DSFColorPickerButton: NSButton
 		}
 
 		self.registerForDraggedTypes([.color])
-
 		self.setAccessibilityRole(NSAccessibility.Role.radioButton)
-
 		self.needsDisplay = true
 	}
 }
 
 // MARK: Drawing
 
-extension DSFColorPickerButton
-{
-	private func isHighContrast() -> Bool
-	{
+extension DSFColorPickerButton {
+	private func isHighContrast() -> Bool {
 		return NSWorkspace.shared.accessibilityDisplayShouldIncreaseContrast
 	}
 
-	private func isDarkMode() -> Bool
-	{
-		if #available(*, macOS 10.14)
-		{
+	private func isDarkMode() -> Bool {
+		if #available(*, macOS 10.14) {
 			let appearance = self.effectiveAppearance.bestMatch(from: [.aqua, .darkAqua])
 			return appearance == .darkAqua
 		}
 		return self.effectiveAppearance.name != .aqua && self.effectiveAppearance.name != .vibrantLight
 	}
 
-	private func selectedBorderColor() -> NSColor
-	{
+	private func selectedBorderColor() -> NSColor {
 		return NSColor.textColor
 	}
 
-	private func borderColor() -> NSColor
-	{
-		if self.isHighContrast()
-		{
+	private func borderColor() -> NSColor {
+		if self.isHighContrast() {
 			return NSColor.textColor
-		}
-		else
-		{
+		} else {
 			return NSColor.secondaryLabelColor
 		}
 	}
 
-	override func updateLayer()
-	{
+	override func updateLayer() {
 		let buttonColor = DSFColorPickerButton.Color(
 			color: self.color,
 			border: self.borderColor(),
-			selectedBorder: self.selectedBorderColor())
-		self.drawLayer?.configure(color: buttonColor,
-								  frame: self.bounds)
+			selectedBorder: self.selectedBorderColor()
+		)
+		self.drawLayer?.configure(color: buttonColor, frame: self.bounds)
 	}
 }
 
 // MARK: Focus ring handling
 
-extension DSFColorPickerButton
-{
-	override func drawFocusRingMask()
-	{
+extension DSFColorPickerButton {
+	override func drawFocusRingMask() {
 		self.bounds.fill()
 	}
 
-	override var focusRingMaskBounds: NSRect
-	{
+	override var focusRingMaskBounds: NSRect {
 		return bounds
 	}
 }
 
 // MARK: Drag drop support
 
-extension DSFColorPickerButton: NSDraggingSource, NSPasteboardItemDataProvider
-{
-	override func acceptsFirstMouse(for event: NSEvent?) -> Bool
-	{
+extension DSFColorPickerButton: NSDraggingSource, NSPasteboardItemDataProvider {
+	override func acceptsFirstMouse(for _: NSEvent?) -> Bool {
 		return true
 	}
 
-	override func draggingEntered(_ sender: NSDraggingInfo) -> NSDragOperation
-	{
-		guard self.canDrop else
-		{
+	override func draggingEntered(_ sender: NSDraggingInfo) -> NSDragOperation {
+		guard self.canDrop else {
 			return []
 		}
 
@@ -338,8 +289,7 @@ extension DSFColorPickerButton: NSDraggingSource, NSPasteboardItemDataProvider
 
 		if let ptypes = pasteboard.types,
 			ptypes.contains(.color),
-			dragSourceMask.contains(.generic)
-		{
+			dragSourceMask.contains(.generic) {
 			self.setNeedsDisplay()
 			return [.generic]
 		}
@@ -347,14 +297,12 @@ extension DSFColorPickerButton: NSDraggingSource, NSPasteboardItemDataProvider
 		return []
 	}
 
-	override func draggingExited(_ sender: NSDraggingInfo?)
-	{
+	override func draggingExited(_: NSDraggingInfo?) {
 		self.isDrop = false
 		self.setNeedsDisplay()
 	}
 
-	override func performDragOperation(_ sender: NSDraggingInfo) -> Bool
-	{
+	override func performDragOperation(_ sender: NSDraggingInfo) -> Bool {
 		self.isDrop = false
 		self.setNeedsDisplay()
 
@@ -362,8 +310,7 @@ extension DSFColorPickerButton: NSDraggingSource, NSPasteboardItemDataProvider
 		let pasteboard = sender.draggingPasteboard
 		if let ptypes = pasteboard.types,
 			ptypes.contains(.color),
-			dragSourceMask.contains(.generic)
-		{
+			dragSourceMask.contains(.generic) {
 			self.color = NSColor(from: pasteboard)
 			self.performClick(self)
 			return true
@@ -371,38 +318,32 @@ extension DSFColorPickerButton: NSDraggingSource, NSPasteboardItemDataProvider
 		return false
 	}
 
-	func pasteboard(_ pasteboard: NSPasteboard?, item: NSPasteboardItem, provideDataForType type: NSPasteboard.PasteboardType)
-	{
+	func pasteboard(_ pasteboard: NSPasteboard?, item _: NSPasteboardItem, provideDataForType type: NSPasteboard.PasteboardType) {
 		if type == .color,
-			let color = self.color
-		{
+			let color = self.color {
 			color.write(to: pasteboard!)
 		}
 	}
 
-	func draggingSession(_ session: NSDraggingSession, sourceOperationMaskFor context: NSDraggingContext) -> NSDragOperation
-	{
+	func draggingSession(_: NSDraggingSession, sourceOperationMaskFor _: NSDraggingContext) -> NSDragOperation {
 		return .generic
 	}
 
-	override func mouseDown(with event: NSEvent)
-	{
+	override func mouseDown(with event: NSEvent) {
 		self.drawLayer?.isPressed = true
 		self.drawLayer?.setNeedsDisplay()
 		self.startDragPoint = self.convert(event.locationInWindow, to: nil)
 		self.highlight(true)
 	}
 
-	override func mouseUp(with _: NSEvent)
-	{
+	override func mouseUp(with _: NSEvent) {
 		self.drawLayer?.isPressed = false
 		self.drawLayer?.setNeedsDisplay()
 		self.startDragPoint = nil
 		self.performClick(self)
 	}
 
-	private func swatchWithColor(_ color: NSColor, size: NSSize) -> NSImage
-	{
+	private func swatchWithColor(_ color: NSColor, size: NSSize) -> NSImage {
 		let im = NSImage(size: size)
 		im.lockFocus()
 		color.drawSwatch(in: NSMakeRect(0, 0, size.width, size.height))
@@ -410,8 +351,7 @@ extension DSFColorPickerButton: NSDraggingSource, NSPasteboardItemDataProvider
 		return im
 	}
 
-	private func snapshot() -> NSImage
-	{
+	private func snapshot() -> NSImage {
 		let rep = self.bitmapImageRepForCachingDisplay(in: self.bounds)!
 		self.cacheDisplay(in: self.bounds, to: rep)
 
@@ -420,20 +360,17 @@ extension DSFColorPickerButton: NSDraggingSource, NSPasteboardItemDataProvider
 		return img
 	}
 
-	private func hasDraggedEnough(_ event: NSEvent) -> Bool
-	{
+	private func hasDraggedEnough(_ event: NSEvent) -> Bool {
 		let pointInView = self.convert(event.locationInWindow, to: nil)
 		let xdist = abs(self.startDragPoint!.x - pointInView.x)
 		let ydist = abs(self.startDragPoint!.y - pointInView.y)
 		return xdist > 2 || ydist > 2
 	}
 
-	override func mouseDragged(with event: NSEvent)
-	{
+	override func mouseDragged(with event: NSEvent) {
 		if self.startDragPoint != nil,
 			self.color != nil,
-			self.hasDraggedEnough(event)
-		{
+			self.hasDraggedEnough(event) {
 			self.drawLayer?.isPressed = false
 			self.drawLayer?.setNeedsDisplay()
 
@@ -441,8 +378,10 @@ extension DSFColorPickerButton: NSDraggingSource, NSPasteboardItemDataProvider
 			pasteboardItem.setDataProvider(self, forTypes: [.color])
 
 			let draggingItem = NSDraggingItem(pasteboardWriter: pasteboardItem)
-			draggingItem.setDraggingFrame(NSMakeRect(0, 0, 15, 15), // self.bounds,
-			                              contents: self.swatchWithColor(self.color!, size: NSMakeSize(15, 15))) // snapshot())
+			draggingItem.setDraggingFrame(
+				NSMakeRect(0, 0, 15, 15), // self.bounds,
+				contents: self.swatchWithColor(self.color!, size: NSMakeSize(15, 15))
+			)
 
 			let draggingSession = beginDraggingSession(with: [draggingItem], event: event, source: self)
 			draggingSession.animatesToStartingPositionsOnCancelOrFail = true

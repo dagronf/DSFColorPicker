@@ -21,23 +21,13 @@
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-//  Usage: 
-//		DSFColorPickerLoupe.shared.pick { (selectedColor) in
-//			if let color = selectedColor {
-//				self.color.color = color
-//			}
-//		}
-
 import Foundation
 
-extension NSColor
-{
+extension NSColor {
 	/// Returns a flat contrasting color for this color
-	func flatContrastColor() -> NSColor
-	{
+	func flatContrastColor() -> NSColor {
 		if let rgbColor = self.usingColorSpace(.genericRGB),
-			rgbColor != NSColor.clear
-		{
+			rgbColor != NSColor.clear {
 			let r = 0.299 * rgbColor.redComponent
 			let g = 0.587 * rgbColor.greenComponent
 			let b = 0.114 * rgbColor.blueComponent
@@ -48,8 +38,7 @@ extension NSColor
 	}
 
 	/// Returns a slightly darker version of this color
-	func darker() -> NSColor
-	{
+	func darker() -> NSColor {
 		let rgbColor = self.usingColorSpace(.genericRGB)
 
 		var h: CGFloat = 0
@@ -58,26 +47,24 @@ extension NSColor
 		var a: CGFloat = 0
 
 		rgbColor?.getHue(&h, saturation: &s, brightness: &b, alpha: &a)
-		return NSColor.init(hue: h, saturation: s, brightness: max(b - 0.1, 0.0), alpha: a)
+		return NSColor(hue: h, saturation: s, brightness: max(b - 0.1, 0.0), alpha: a)
 	}
 
 	/// Converts a raw UInt32 into an ARGB NSColor
-	static func argbToColor(_ argbValue: UInt32) -> NSColor
-	{
-		let hasAlpha = argbValue > 0x00FFFFFF
+	static func argbToColor(_ argbValue: UInt32) -> NSColor {
+		let hasAlpha = argbValue > 0x00FF_FFFF
 		let alpha = UInt8(truncatingIfNeeded: argbValue >> 24)
 		let red = UInt8(truncatingIfNeeded: argbValue >> 16)
 		let green = UInt8(truncatingIfNeeded: argbValue >> 8)
 		let blue = UInt8(truncatingIfNeeded: argbValue)
 		return NSColor(red: CGFloat(red) / 256.0,
-					   green: CGFloat(green) / 256.0,
-					   blue: CGFloat(blue) / 256.0,
-					   alpha: hasAlpha ? CGFloat(alpha) / 256.0 : 1.0)
+		               green: CGFloat(green) / 256.0,
+		               blue: CGFloat(blue) / 256.0,
+		               alpha: hasAlpha ? CGFloat(alpha) / 256.0 : 1.0)
 	}
 
 	/// Converts an array of UInt32 colors to an array of NSColor
-	static func argbValuesToColors(argbValues: [UInt32]) -> [NSColor]
-	{
+	static func argbValuesToColors(argbValues: [UInt32]) -> [NSColor] {
 		return argbValues.map { argbToColor($0) }
 	}
 }

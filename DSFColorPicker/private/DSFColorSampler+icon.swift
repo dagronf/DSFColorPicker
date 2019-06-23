@@ -1,5 +1,5 @@
 //
-//  DSFColorPickerLoupe+icon.swift
+//  DSFColorSampler+icon.swift
 //  DSFColorPicker
 //
 //  Created by Darren Ford on 23/3/19.

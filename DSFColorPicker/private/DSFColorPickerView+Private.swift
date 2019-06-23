@@ -306,9 +306,11 @@ extension DSFColorPickerView {
 	}
 
 	@objc func colorPicker(_: Any) {
-		DSFColorPickerLoupe.shared.pick { selectedColor in
-			self.selectedColor = selectedColor
-			self.updateRecents(selectedColor)
+		DSFColorSampler.show { [weak self] selectedColor in
+			if let selectedColor = selectedColor {
+				self?.selectedColor = selectedColor
+				self?.updateRecents(selectedColor)
+			}
 		}
 	}
 

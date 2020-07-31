@@ -1,6 +1,9 @@
 # DSFColorPicker
 
-A Swift class to display a customizable color picker for macOS.
+A Swift library to display a customizable color picker for macOS.
+
+![](https://img.shields.io/github/v/tag/dagronf/DSFColorPicker) ![](https://img.shields.io/badge/macOS-10.12+-red) ![](https://img.shields.io/badge/Swift-5.0-orange.svg)
+![](https://img.shields.io/badge/License-MIT-lightgrey) [![](https://img.shields.io/badge/spm-compatible-brightgreen.svg?style=flat)](https://swift.org/package-manager)
 
 ![](https://dagronf.github.io/art/projects/DSFColorPicker/general.gif)
 
@@ -13,7 +16,14 @@ A Swift class to display a customizable color picker for macOS.
 * Configurable recent colors support
 * Drag and drop support
 
+## Installation
+
+**Using Swift Package Manager:** Add `https://github.com/dagronf/DSFColorPicker` to your project
+
+**Manually:** Copy the contents of `Sources/DSFColorPicker` to your project.
+
 ## Configuration
+
 
 ### Interface builder
 

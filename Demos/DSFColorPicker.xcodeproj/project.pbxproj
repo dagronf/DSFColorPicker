@@ -11,7 +11,7 @@
 		2361559321DB404E008ABF4E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2361559221DB404E008ABF4E /* AppDelegate.swift */; };
 		2361559521DB404F008ABF4E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2361559421DB404F008ABF4E /* Assets.xcassets */; };
 		2361559821DB404F008ABF4E /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2361559621DB404F008ABF4E /* MainMenu.xib */; };
-		23C4CEEE24D3BA0E0030C8DC /* DSFColorPicker in Frameworks */ = {isa = PBXBuildFile; productRef = 23C4CEED24D3BA0E0030C8DC /* DSFColorPicker */; };
+		23C4CEF424D3BD9A0030C8DC /* DSFColorPicker in Frameworks */ = {isa = PBXBuildFile; productRef = 23C4CEF324D3BD9A0030C8DC /* DSFColorPicker */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -41,7 +41,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				23C4CEEE24D3BA0E0030C8DC /* DSFColorPicker in Frameworks */,
+				23C4CEF424D3BD9A0030C8DC /* DSFColorPicker in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -104,7 +104,7 @@
 			);
 			name = DSFColorPickerDemo;
 			packageProductDependencies = (
-				23C4CEED24D3BA0E0030C8DC /* DSFColorPicker */,
+				23C4CEF324D3BD9A0030C8DC /* DSFColorPicker */,
 			);
 			productName = DSFColorPickerDemo;
 			productReference = 2361559021DB404E008ABF4E /* DSFColorPickerDemo.app */;
@@ -135,7 +135,7 @@
 			);
 			mainGroup = 2361557521DB3FF4008ABF4E;
 			packageReferences = (
-				23C4CEEC24D3BA0E0030C8DC /* XCRemoteSwiftPackageReference "DSFColorPicker" */,
+				23C4CEF224D3BD9A0030C8DC /* XCRemoteSwiftPackageReference "DSFColorPicker" */,
 			);
 			productRefGroup = 2361558021DB3FF4008ABF4E /* Products */;
 			projectDirPath = "";
@@ -382,17 +382,25 @@
 				kind = branch;
 			};
 		};
+		23C4CEF224D3BD9A0030C8DC /* XCRemoteSwiftPackageReference "DSFColorPicker" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/dagronf/DSFColorPicker.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		23C4CEED24D3BA0E0030C8DC /* DSFColorPicker */ = {
+		23C4CEEF24D3BA250030C8DC /* DSFColorPicker */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 23C4CEEC24D3BA0E0030C8DC /* XCRemoteSwiftPackageReference "DSFColorPicker" */;
 			productName = DSFColorPicker;
 		};
-		23C4CEEF24D3BA250030C8DC /* DSFColorPicker */ = {
+		23C4CEF324D3BD9A0030C8DC /* DSFColorPicker */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 23C4CEEC24D3BA0E0030C8DC /* XCRemoteSwiftPackageReference "DSFColorPicker" */;
+			package = 23C4CEF224D3BD9A0030C8DC /* XCRemoteSwiftPackageReference "DSFColorPicker" */;
 			productName = DSFColorPicker;
 		};
 /* End XCSwiftPackageProductDependency section */

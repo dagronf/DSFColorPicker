@@ -21,7 +21,7 @@
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-import Foundation
+import AppKit
 
 extension NSColor {
 	/// Returns a flat contrasting color for this color

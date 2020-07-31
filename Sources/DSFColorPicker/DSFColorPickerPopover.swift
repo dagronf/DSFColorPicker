@@ -21,7 +21,7 @@
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-import Foundation
+import AppKit
 
 // MARK: - Color picker
 
@@ -55,6 +55,7 @@ public class DSFColorPickerPopover: NSObject, NSPopoverDelegate {
 		showRecents: Bool = true,
 		showTitles: Bool = true,
 		showColorDropper: Bool = true,
+		showColorPanelButton: Bool = false,
 		sender: NSView, preferredEdge: NSRectEdge) {
 
 		if let openPopover = self.popover {
@@ -76,6 +77,8 @@ public class DSFColorPickerPopover: NSObject, NSPopoverDelegate {
 		vc.showRecents = showRecents
 		vc.showTitles = showTitles
 		vc.showColorDropper = showColorDropper
+		vc.showColorPaletteButton = showColorPanelButton
+
 		vc.updateLayoutForTheme()
 
 		self.popover?.contentViewController = viewController
@@ -89,5 +92,6 @@ public class DSFColorPickerPopover: NSObject, NSPopoverDelegate {
 
 	public func popoverDidClose(_: Notification) {
 		self.popover = nil
+		NSColorPanel.shared.setTarget(nil)
 	}
 }

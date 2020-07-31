@@ -92,6 +92,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSPopoverDelegate {
 				showRecents: self.showRecents,
 				showTitles: self.showTitles,
 				showColorDropper: self.showPicker,
+				showColorPanelButton: true,
 				sender: sender,
 				preferredEdge: .maxX
 			)

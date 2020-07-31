@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17132" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17132"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -685,6 +686,7 @@
                     </menu>
                 </menuItem>
             </items>
+            <point key="canvasLocation" x="-150" y="154"/>
         </menu>
         <window title="ColorPicker" allowsToolTipsWhenApplicationIsInactive="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
@@ -740,7 +742,7 @@
                                             <gridCells>
                                                 <gridCell row="uzB-cL-MFD" column="me1-Y0-x2z" id="B1C-5M-DlS">
                                                     <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Fzm-Nk-pyr">
-                                                        <rect key="frame" x="-2" y="81" width="143" height="17"/>
+                                                        <rect key="frame" x="-2" y="82" width="143" height="16"/>
                                                         <textFieldCell key="cell" lineBreakMode="clipping" title="Color via notification is" id="gyn-7D-P8l">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -761,7 +763,7 @@
                                                 </gridCell>
                                                 <gridCell row="xSM-e1-cgE" column="me1-Y0-x2z" id="sWq-6e-yCI">
                                                     <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4p8-ZR-uNI">
-                                                        <rect key="frame" x="16" y="44" width="125" height="17"/>
+                                                        <rect key="frame" x="16" y="45" width="125" height="16"/>
                                                         <textFieldCell key="cell" lineBreakMode="clipping" title="Color via callback is" id="GUt-bF-3e7">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -781,7 +783,7 @@
                                                 </gridCell>
                                                 <gridCell row="a20-Pp-rxQ" column="me1-Y0-x2z" id="e1I-UT-fqW">
                                                     <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ojf-Zr-twL">
-                                                        <rect key="frame" x="32" y="7" width="109" height="17"/>
+                                                        <rect key="frame" x="32" y="8" width="109" height="16"/>
                                                         <textFieldCell key="cell" lineBreakMode="clipping" title="Set color by drop" id="ZHs-59-F7l">
                                                             <font key="font" metaFont="system"/>
                                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -1049,6 +1051,29 @@
                                                 <userDefinedRuntimeAttribute type="string" keyPath="namedTheme" value="linereversed"/>
                                             </userDefinedRuntimeAttributes>
                                         </customView>
+                                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="1VV-0g-OJW" customClass="ApplePreviewPickerView" customModule="DSFColorPickerDemo" customModuleProvider="target">
+                                            <rect key="frame" x="17" y="211" width="191" height="208"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="namedTheme" value="Preview"/>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="name" value="Preview"/>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="showThemes" value="NO"/>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="showRecents" value="NO"/>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="showTitles" value="NO"/>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cellWidth">
+                                                    <real key="value" value="15"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cellHeight">
+                                                    <real key="value" value="15"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="horizontalSpacing">
+                                                    <real key="value" value="1"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="verticalSpacing">
+                                                    <real key="value" value="1"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="showColorPaletteButton" value="YES"/>
+                                            </userDefinedRuntimeAttributes>
+                                        </customView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="NpG-Ix-lXL" firstAttribute="top" secondItem="tmH-eV-iSA" secondAttribute="top" constant="14" id="BfR-8v-9gH"/>
@@ -1057,8 +1082,10 @@
                                         <constraint firstItem="KoR-a2-i1k" firstAttribute="bottom" secondItem="LFO-Sa-tnP" secondAttribute="bottom" id="dod-tP-E7D"/>
                                         <constraint firstItem="KoR-a2-i1k" firstAttribute="top" secondItem="LFO-Sa-tnP" secondAttribute="top" id="efq-Dm-P9f"/>
                                         <constraint firstItem="NpG-Ix-lXL" firstAttribute="leading" secondItem="tmH-eV-iSA" secondAttribute="leading" constant="17" id="eoz-6n-uSN"/>
+                                        <constraint firstItem="1VV-0g-OJW" firstAttribute="top" secondItem="NpG-Ix-lXL" secondAttribute="bottom" constant="29" id="g6t-0D-OKA"/>
                                         <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="LFO-Sa-tnP" secondAttribute="bottom" constant="20" symbolic="YES" id="iFD-du-mbN"/>
                                         <constraint firstItem="LFO-Sa-tnP" firstAttribute="leading" secondItem="KoR-a2-i1k" secondAttribute="trailing" constant="31" id="mEB-Km-jV4"/>
+                                        <constraint firstItem="1VV-0g-OJW" firstAttribute="leading" secondItem="tmH-eV-iSA" secondAttribute="leading" constant="17" id="pld-XB-sMs"/>
                                     </constraints>
                                 </view>
                             </tabViewItem>
@@ -1169,4 +1196,33 @@
         </window>
         <userDefaultsController representsSharedInstance="YES" id="vTd-0o-GNY"/>
     </objects>
+    <designables>
+        <designable name="1E0-1p-Pq8">
+            <size key="intrinsicContentSize" width="130" height="162"/>
+        </designable>
+        <designable name="5LC-kd-ocC">
+            <size key="intrinsicContentSize" width="129" height="175"/>
+        </designable>
+        <designable name="8BO-Yy-vNs">
+            <size key="intrinsicContentSize" width="270" height="384"/>
+        </designable>
+        <designable name="Ji4-zQ-Vzb">
+            <size key="intrinsicContentSize" width="230" height="330"/>
+        </designable>
+        <designable name="KoR-a2-i1k">
+            <size key="intrinsicContentSize" width="30" height="419"/>
+        </designable>
+        <designable name="LFO-Sa-tnP">
+            <size key="intrinsicContentSize" width="30" height="419"/>
+        </designable>
+        <designable name="NpG-Ix-lXL">
+            <size key="intrinsicContentSize" width="247" height="74"/>
+        </designable>
+        <designable name="QeL-gc-Bu7">
+            <size key="intrinsicContentSize" width="130" height="162"/>
+        </designable>
+        <designable name="T6p-FI-ULP">
+            <size key="intrinsicContentSize" width="174" height="199"/>
+        </designable>
+    </designables>
 </document>

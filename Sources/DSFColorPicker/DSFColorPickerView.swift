@@ -72,6 +72,9 @@ import Cocoa
 	/// Show or hide the color dropper
 	@IBInspectable public var showColorDropper: Bool = true
 
+	/// Show or hide the 'show colors' button
+	@IBInspectable public var showColorPaletteButton: Bool = false
+
 	/// Cell width and height
 	@IBInspectable public var cellWidth: CGFloat = 30
 	@IBInspectable public var cellHeight: CGFloat = 30

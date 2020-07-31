@@ -1,6 +1,6 @@
 # DSFColorPicker
 
-A Swift UI class to display a customizable color picker for macOS.
+A Swift class to display a customizable color picker for macOS.
 
 ![](https://dagronf.github.io/art/projects/DSFColorPicker/general.gif)
 

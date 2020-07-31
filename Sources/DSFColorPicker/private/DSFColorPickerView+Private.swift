@@ -209,11 +209,40 @@ extension DSFColorPickerView {
 		}
 		self.colorPickerStack.addArrangedSubview(self.configureGrid())
 
+		if self.showColorPaletteButton {
+			let button = NSButton()
+			button.translatesAutoresizingMaskIntoConstraints = false
+			button.title = "Show Colors…"
+			button.target = self
+			button.action = #selector(userClickedShowColors(_:))
+			button.controlSize = .regular
+			button.bezelStyle = .rounded
+			self.colorPickerStack.addArrangedSubview(button)
+		}
+
 		self.colorPickerStack.needsLayout = true
 		self.colorPickerStack.needsUpdateConstraints = true
 
 		self.invalidateIntrinsicContentSize()
 	}
+
+	@IBAction func userClickedShowColors(_ sender: NSButton) {
+		let colorPanel = NSColorPanel.shared
+
+		colorPanel.setTarget(self)
+		colorPanel.setAction(#selector(colorPanelChangedColors(_:)))
+		colorPanel.showsAlpha = true
+		colorPanel.isContinuous = true
+		if let selected = self.selectedColor {
+			colorPanel.color = selected
+		}
+		colorPanel.orderFront(self)
+	}
+
+	@IBAction func colorPanelChangedColors(_ sender: NSColorPanel?) {
+		self.selectedColor = sender?.color
+	}
+
 
 	@IBAction func userChangedTheme(_ sender: NSPopUpButton) {
 		let themeName = sender.title

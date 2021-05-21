@@ -33,18 +33,23 @@ public class DSFColorPickerPopover: NSObject, NSPopoverDelegate {
 	class DSFColorPickerPopoverViewController: NSViewController {
 		var colorView: DSFColorPickerView?
 
-		func configure(name: String) {
+		internal func configure(name: String) -> DSFColorPickerView {
 			self.view = NSView()
 			self.view.translatesAutoresizingMaskIntoConstraints = false
 
-			self.colorView = DSFColorPickerView()
-			self.colorView!.name = name
-			self.view.addSubview(self.colorView!)
+			let colorpickerView = DSFColorPickerView()
 
-			self.colorView!.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 8).isActive = true
-			self.colorView!.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 8).isActive = true
-			self.colorView!.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -8).isActive = true
-			self.colorView!.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -8).isActive = true
+			colorpickerView.name = name
+			self.view.addSubview(colorpickerView)
+
+			colorpickerView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 8).isActive = true
+			colorpickerView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 8).isActive = true
+			colorpickerView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -8).isActive = true
+			colorpickerView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -8).isActive = true
+
+			self.colorView = colorpickerView
+
+			return colorpickerView
 		}
 	}
 
@@ -66,28 +71,33 @@ public class DSFColorPickerPopover: NSObject, NSPopoverDelegate {
 		self.popover = NSPopover()
 
 		let viewController = DSFColorPickerPopoverViewController()
-		viewController.configure(name: name)
-		guard let vc = viewController.colorView else {
-			assert(false)
-		}
 
-		vc.selectedTheme = theme
-		vc.showThemes = showThemes
-		vc.showCurrent = showCurrent
-		vc.showRecents = showRecents
-		vc.showTitles = showTitles
-		vc.showColorDropper = showColorDropper
-		vc.showColorPaletteButton = showColorPanelButton
+		// Configure the color picker view
 
-		vc.updateLayoutForTheme()
+		let colorView = viewController.configure(name: name)
+		colorView.selectedTheme = theme
+		colorView.showThemes = showThemes
+		colorView.showCurrent = showCurrent
+		colorView.showRecents = showRecents
+		colorView.showTitles = showTitles
+		colorView.showColorDropper = showColorDropper
+		colorView.showColorPaletteButton = showColorPanelButton
 
-		self.popover?.contentViewController = viewController
-		self.popover?.behavior = .semitransient
-		self.popover?.delegate = self
+		colorView.updateLayoutForTheme()
 
-		self.popover?.contentSize = viewController.colorView!.fittingSize
+		// Configure the popover
 
-		self.popover?.show(relativeTo: sender.bounds, of: sender, preferredEdge: preferredEdge)
+		let colorPickerPopover = NSPopover()
+		self.popover = colorPickerPopover
+
+		colorPickerPopover.contentViewController = viewController
+		colorPickerPopover.behavior = .semitransient
+		colorPickerPopover.delegate = self
+		colorPickerPopover.contentSize = colorView.fittingSize
+
+		// And show it!
+
+		colorPickerPopover.show(relativeTo: sender.bounds, of: sender, preferredEdge: preferredEdge)
 	}
 
 	public func popoverDidClose(_: Notification) {

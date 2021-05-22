@@ -18,12 +18,13 @@ A Swift library to display a customizable color picker for macOS.
 
 ## Installation
 
-**Using Swift Package Manager:** Add `https://github.com/dagronf/DSFColorPicker` to your project
-
-**Manually:** Copy the contents of `Sources/DSFColorPicker` to your project.
+Add `https://github.com/dagronf/DSFColorPicker` to your project
 
 ## Configuration
 
+Unfortunately, Xcode has a LOT of problems displaying `@IBDesignable` content in Interface Builder if the content comes from a Swift Package.  Sometimes it displays, sometimes it doesn't and displays an error about tvOS. I've reported this to Apple in many forms over the years and nothing has been done about it - my guess is the emphasis is moving heavily to SwiftUI previews and this bug is becoming less and less relevant to them.
+
+So what does this mean?  You will still be able to create and configure your color picker within Interface Builder, however the pretty previews may or may not display in Interface Builder. Your app  will display fine, its just that IB has platform problems when it comes to Swift Package imports.
 
 ### Interface builder
 
@@ -76,6 +77,16 @@ The number of recent colors (if shown) is the same as the number of columns in t
 * Set the cell width and height
 * Set the spacing between the color cells
 
+### Color sampling support
+
+As of macOS 10.15, your app will require Screen Recording permissions to use the color sampler (the eye dropper). 
+
+The first time a user selects the eye-dropper, macOS will display a dialog asking for permission.
+
+You can view the Screen Recording permissions for apps in the system preferences `Security & Privacy` pane.
+
+`System Preferences > Security & Privacy > Privacy > Screen Recording` 
+
 ### Theme support
 
 Supply a set of themes, and configure the control to display the theme selector.
@@ -103,3 +114,43 @@ Dynamically adjusts to high-contrast display modes
 
 * High contrast support
 * VoiceOver reads out 'named' color views as they are interacted with ("<name> Color Selector")
+
+# Changes
+
+## `2.0.0`
+
+* Updated the package to depend on the [`DSFColorSampler`](https://github.com/dagronf/DSFColorSampler) package instead of embedding an older version of the source.
+
+* Removed 'direct' method of installing as the SPM package now depends on `DSFColorSampler`.
+
+## `1.2.0`
+
+* Fixed a compile bug when archiving ([Github issue tracker](https://github.com/dagronf/DSFColorPicker/issues/1))
+
+# License
+
+MIT. Use it for anything you want, just attribute my work. Let me know if you do use it somewhere, I'd love to hear about it!
+
+```
+MIT License
+
+Copyright (c) 2021 Darren Ford
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```

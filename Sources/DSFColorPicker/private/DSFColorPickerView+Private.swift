@@ -23,6 +23,8 @@
 
 import Cocoa
 
+import DSFColorSampler
+
 extension DSFColorPickerView {
 	public class DFColorPickerStack: NSStackView, NSAccessibilityGroup {
 		override init(frame frameRect: NSRect) {
@@ -335,7 +337,7 @@ extension DSFColorPickerView {
 	}
 
 	@objc func colorPicker(_: Any) {
-		DSFColorSampler.show { [weak self] selectedColor in
+		DSFColorSampler.selectColor { [weak self] selectedColor in
 			if let selectedColor = selectedColor {
 				self?.selectedColor = selectedColor
 				self?.updateRecents(selectedColor)

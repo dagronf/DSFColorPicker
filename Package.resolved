@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "DSFColorSampler",
+        "repositoryURL": "https://github.com/dagronf/DSFColorSampler",
+        "state": {
+          "branch": null,
+          "revision": "235665aebfc3bfb144b72f87af2c468769ec9537",
+          "version": "2.0.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

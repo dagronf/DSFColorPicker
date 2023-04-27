@@ -24,59 +24,51 @@
 import Cocoa
 import DSFColorPicker
 
-@IBDesignable class CustomPickerView: DSFColorPickerView
-{
+@IBDesignable class CustomPickerView: DSFColorPickerView {
 	let customTheme = CustomThemes()
-	override func themes() -> DSFColorPickerThemes
-	{
+	override func themes() -> DSFColorPickerThemes {
 		return self.customTheme
 	}
 }
 
-class CustomThemes: DSFColorPickerThemes
-{
-	override func loadThemes() -> [DSFColorPickerTheme]
-	{
+class CustomThemes: DSFColorPickerThemes {
+	override func loadThemes() -> [DSFColorPickerTheme] {
 		let themes: [DSFColorPickerTheme] =
 		[
 			DSFColorPickerTheme(name: "Unique", argbValueGrid: [
 				[0xAC7982, 0xD5946A, 0x7B978C, 0x63758A, 0xA7806D],
 				[0xD7A7BA, 0xE4B999, 0x658AA1, 0x847BA6, 0x9B9869],
-				[0xE6BCC7, 0xEAC5A7, 0xA2BE84, 0x93B0D6, 0xAEAAA1]
+				[0xE6BCC7, 0xEAC5A7, 0xA2BE84, 0x93B0D6, 0xAEAAA1],
 			]),
 			DSFColorPickerTheme(name: "Gorgeous", argbValueGrid: [
 				[0x2C5A72, 0xBA3C3C, 0x872D4E, 0x55235E, 0x222120],
 				[0x3B808C, 0xD89933, 0xD38C7A, 0x72317C, 0x4C4C4C],
-				[0x95C3D8, 0xE9C27F, 0xDDA9B1, 0xC0A7C8, 0xC8C8C8]
+				[0x95C3D8, 0xE9C27F, 0xDDA9B1, 0xC0A7C8, 0xC8C8C8],
 			]),
 			DSFColorPickerTheme(name: "Colorful", argbValueGrid: [
 				[0x3550A0, 0x4DA051, 0xE7B83D, 0xC53A33, 0xB32D6E],
 				[0x387BC3, 0x74B04B, 0xF6DD48, 0xCC6431, 0xC5318C],
-				[0x50AAED, 0xA0C243, 0xFDF14F, 0xD6862E, 0xD68CB7]
+				[0x50AAED, 0xA0C243, 0xFDF14F, 0xD6862E, 0xD68CB7],
 			]),
-		 	DSFColorPickerTheme(name: "Cool", argbValueGrid: [
+			DSFColorPickerTheme(name: "Cool", argbValueGrid: [
 				[0x153745, 0x73669E, 0x2D5B96, 0x4CA2BB, 0x64A68B],
 				[0x658AA1, 0x8082B4, 0x78A9DB, 0x8CBFD5, 0x96BFA4],
-				[0x95B8D3, 0xB0A8CD, 0x79B8DF, 0xB1D5E9, 0xA9CBB7]
-			])
+				[0x95B8D3, 0xB0A8CD, 0x79B8DF, 0xB1D5E9, 0xA9CBB7],
+			]),
 		]
 		return themes
 	}
 }
 
-@IBDesignable class DefaultPickerView: DSFColorPickerView
-{
+@IBDesignable class DefaultPickerView: DSFColorPickerView {
 	let customTheme = DefaultPickerViewThemes()
-	override func themes() -> DSFColorPickerThemes
-	{
+	override func themes() -> DSFColorPickerThemes {
 		return self.customTheme
 	}
 }
 
-class DefaultPickerViewThemes: DSFColorPickerThemes
-{
-	override func loadThemes() -> [DSFColorPickerTheme]
-	{
+class DefaultPickerViewThemes: DSFColorPickerThemes {
+	override func loadThemes() -> [DSFColorPickerTheme] {
 		var themes: [DSFColorPickerTheme] =
 		[
 			DSFColorPickerTheme(name: "default", argbValueGrid: [
@@ -87,19 +79,19 @@ class DefaultPickerViewThemes: DSFColorPickerThemes
 				[0x457DBC, 0x280789, 0x86183B, 0xD94C2D, 0xE9B245, 0x699D3E],
 				[0x5EA9F1, 0x3305D2, 0xBD2A56, 0xDE623F, 0xEBB74F, 0x89C157],
 				[0x68BEF2, 0x5517EF, 0xC94D79, 0xE18563, 0xF1CA6B, 0xA2D077],
-				[0x8FD4F5, 0x865CEE, 0xDB80A3, 0xE9AB90, 0xF5DA96, 0xC0E19E]
+				[0x8FD4F5, 0x865CEE, 0xDB80A3, 0xE9AB90, 0xF5DA96, 0xC0E19E],
 			]),
 
 			DSFColorPickerTheme(name: "simple", argbValueGrid: [
-				[0xE0BA4240, 0xE0F0C976, 0xE096A873, 0xE089C9B8, 0xE0AFE6E4, 0xE07AA3C0, 0xE08B719F, 0xE0DB849A]
+				[0xE0BA_4240, 0xE0F0_C976, 0xE096_A873, 0xE089_C9B8, 0xE0AF_E6E4, 0xE07A_A3C0, 0xE08B_719F, 0xE0DB_849A],
 			]),
 			DSFColorPickerTheme(name: "muted", argbValueGrid: [
 				[0xD7E0E8, 0xE3E9E0, 0xFDEBC6, 0xF0B297, 0xE7938C, 0xB0ABC0],
 				[0xA7BBCF, 0x98A68D, 0xE3C07F, 0xEA8C60, 0xB93E40, 0x807798],
 				[0x4B7196, 0x4C683D, 0xA3793B, 0xDD5822, 0x912122, 0x615878],
 				[0x395570, 0x324923, 0x5B422A, 0xB34A00, 0x6E0A01, 0x423C51],
-				[0xFFFFFF, 0xA9A9A9, 0x797979, 0x424242, 0x000000, 0xFF000000]
-			])
+				[0xFFFFFF, 0xA9A9A9, 0x797979, 0x424242, 0x000000, 0xFF00_0000],
+			]),
 		]
 
 		let lineColors: [UInt32] = [
@@ -122,31 +114,27 @@ class DefaultPickerViewThemes: DSFColorPickerThemes
 			0xFFFF00,
 			0xFFBF00,
 			0xFF7F00,
-			0xFF3F00];
+			0xFF3F00,
+		]
 
-		let line = lineColors.map{ [$0] }
-		let lineRev = lineColors.reversed().map{ [$0] }
+		let line = lineColors.map { [$0] }
+		let lineRev = lineColors.reversed().map { [$0] }
 
 		themes.append(DSFColorPickerTheme(name: "line", argbValueGrid: line))
 		themes.append(DSFColorPickerTheme(name: "linereversed", argbValueGrid: lineRev))
 
 		return themes
 	}
-
-
 }
 
-@IBDesignable class ApplePreviewPickerView: DSFColorPickerView
-{
+@IBDesignable class ApplePreviewPickerView: DSFColorPickerView {
 	let customTheme = ApplePreviewPickerThemes()
-	override func themes() -> DSFColorPickerThemes
-	{
+	override func themes() -> DSFColorPickerThemes {
 		return self.customTheme
 	}
 }
 
 class ApplePreviewPickerThemes: DSFColorPickerThemes {
-
 	let colorLiterals = [
 		[#colorLiteral(red: 0.880, green: 0.929, blue: 0.831, alpha: 1), #colorLiteral(red: 0.970, green: 0.983, blue: 0.859, alpha: 1), #colorLiteral(red: 0.991, green: 0.994, blue: 0.862, alpha: 1), #colorLiteral(red: 0.997, green: 0.949, blue: 0.831, alpha: 1), #colorLiteral(red: 1.000, green: 0.928, blue: 0.833, alpha: 1), #colorLiteral(red: 1.000, green: 0.886, blue: 0.837, alpha: 1), #colorLiteral(red: 0.998, green: 0.857, blue: 0.848, alpha: 1), #colorLiteral(red: 0.971, green: 0.829, blue: 0.876, alpha: 1), #colorLiteral(red: 0.941, green: 0.790, blue: 0.998, alpha: 1), #colorLiteral(red: 0.846, green: 0.791, blue: 0.999, alpha: 1), #colorLiteral(red: 0.832, green: 0.887, blue: 0.998, alpha: 1), #colorLiteral(red: 0.791, green: 0.941, blue: 0.999, alpha: 1)],
 		[#colorLiteral(red: 0.799, green: 0.912, blue: 0.711, alpha: 1), #colorLiteral(red: 0.950, green: 0.964, blue: 0.720, alpha: 1), #colorLiteral(red: 1.000, green: 0.979, blue: 0.726, alpha: 1), #colorLiteral(red: 1.000, green: 0.893, blue: 0.664, alpha: 1), #colorLiteral(red: 0.999, green: 0.851, blue: 0.660, alpha: 1), #colorLiteral(red: 1.000, green: 0.772, blue: 0.672, alpha: 1), #colorLiteral(red: 0.996, green: 0.713, blue: 0.682, alpha: 1), #colorLiteral(red: 0.958, green: 0.638, blue: 0.753, alpha: 1), #colorLiteral(red: 0.890, green: 0.576, blue: 0.996, alpha: 1), #colorLiteral(red: 0.693, green: 0.549, blue: 0.995, alpha: 1), #colorLiteral(red: 0.657, green: 0.777, blue: 0.998, alpha: 1), #colorLiteral(red: 0.584, green: 0.890, blue: 0.992, alpha: 1)],
@@ -161,17 +149,15 @@ class ApplePreviewPickerThemes: DSFColorPickerThemes {
 		[#colorLiteral(red: 0.000, green: 0.000, blue: 0.004, alpha: 1), #colorLiteral(red: 0.137, green: 0.137, blue: 0.137, alpha: 1), #colorLiteral(red: 0.262, green: 0.267, blue: 0.267, alpha: 1), #colorLiteral(red: 0.376, green: 0.376, blue: 0.376, alpha: 1), #colorLiteral(red: 0.478, green: 0.478, blue: 0.478, alpha: 1), #colorLiteral(red: 0.572, green: 0.573, blue: 0.572, alpha: 1), #colorLiteral(red: 0.672, green: 0.667, blue: 0.667, alpha: 1), #colorLiteral(red: 0.753, green: 0.753, blue: 0.753, alpha: 1), #colorLiteral(red: 0.839, green: 0.839, blue: 0.835, alpha: 1), #colorLiteral(red: 0.917, green: 0.922, blue: 0.922, alpha: 1), #colorLiteral(red: 1.000, green: 1.000, blue: 1.000, alpha: 1), #colorLiteral(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.0)],
 	]
 
-	lazy var colors: [[NSColor]] = {
-		colorLiterals.reversed().map { row in
-			row.reversed().map { colorLiteral in
-				return colorLiteral
-			}
+	lazy var colors: [[NSColor]] = colorLiterals.reversed().map { row in
+		row.reversed().map { colorLiteral in
+			colorLiteral
 		}
-	}()
+	}
 
 	override func loadThemes() -> [DSFColorPickerTheme] {
 		let themes: [DSFColorPickerTheme] = [
-			DSFColorPickerTheme(name: "Preview", colors: self.colors)
+			DSFColorPickerTheme(name: "Preview", colors: self.colors),
 		]
 		return themes
 	}

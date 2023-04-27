@@ -185,8 +185,12 @@ extension DSFColorPickerView {
 		let preColorLabel = NSLocalizedString("Preset", comment: "The set of predefined colors")
 		let themeColorLabel = NSLocalizedString("Themes", comment: "The available themes to choose from")
 
+		// If themes are enabled, show the popup
+
 		if self.showThemes && self.themes().themeNames().count > 0 {
-			self.colorPickerStack.addArrangedSubview(self.configureLabel(themeColorLabel))
+			if self.showTitles {
+				self.colorPickerStack.addArrangedSubview(self.configureLabel(themeColorLabel))
+			}
 			let popover = self.configureThemeChooser()
 			self.colorPickerStack.addArrangedSubview(popover)
 		}

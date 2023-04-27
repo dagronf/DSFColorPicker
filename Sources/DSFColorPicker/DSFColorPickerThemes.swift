@@ -23,7 +23,7 @@ import Cocoa
 
 // MARK: - Color picker themes container
 
-open class DSFColorPickerThemes: NSObject {
+@objc open class DSFColorPickerThemes: NSObject {
 	private var defaultThemes: [DSFColorPickerTheme] = []
 
 	/// Default is a simple theme

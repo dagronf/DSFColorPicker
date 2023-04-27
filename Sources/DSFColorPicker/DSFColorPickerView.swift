@@ -96,16 +96,19 @@ import Cocoa
 		}
 	}
 
+	/// The number of columns in the color grid
 	public var colCount: Int {
 		// Theme dictates the number of columns
 		return self.selectedTheme?.colCount ?? 0
 	}
 
+	/// The number of rows in the color grid
 	public var rowCount: Int {
 		// Theme dictates the number of rows
 		return self.selectedTheme?.rowCount ?? 0
 	}
 
+	/// The color that's currently selected in the control
 	@objc public var selectedColor: NSColor? {
 		didSet {
 			self.selectedColorButton?.color = self.selectedColor

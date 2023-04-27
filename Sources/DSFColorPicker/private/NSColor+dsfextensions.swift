@@ -24,7 +24,7 @@ import AppKit
 extension NSColor {
 	/// Returns a flat contrasting color for this color
 	func flatContrastColor() -> NSColor {
-		if let rgbColor = self.usingColorSpace(.genericRGB),
+		if let rgbColor = self.usingColorSpace(.extendedSRGB),
 			rgbColor != NSColor.clear {
 			let r = 0.299 * rgbColor.redComponent
 			let g = 0.587 * rgbColor.greenComponent
@@ -37,7 +37,7 @@ extension NSColor {
 
 	/// Returns a slightly darker version of this color
 	func darker() -> NSColor {
-		let rgbColor = self.usingColorSpace(.genericRGB)
+		let rgbColor = self.usingColorSpace(.extendedSRGB)
 
 		var h: CGFloat = 0
 		var s: CGFloat = 0

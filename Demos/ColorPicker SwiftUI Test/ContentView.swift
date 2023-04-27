@@ -10,13 +10,23 @@ import SwiftUI
 import DSFColorPicker
 
 struct ContentView: View {
+	@State var selectedColor: Color = .red
 	var body: some View {
 		VStack {
-			Image(systemName: "globe")
-				.imageScale(.large)
-				.foregroundColor(.accentColor)
-			Text("Hello, world!")
-			DSFColorPickerUI()
+			HStack {
+				VStack {
+					ColorPicker("fish", selection: $selectedColor)
+					DSFColorPickerUI(
+						named: "SwiftUI-test",
+						selectedColor: $selectedColor
+					)
+				}
+				DSFColorPickerUI(
+					named: "SwiftUI-test2",
+					showRecents: false,
+					selectedColor: $selectedColor
+				)
+			}
 		}
 		.padding()
 	}

@@ -45,10 +45,16 @@ import Cocoa
 
 	// MARK: - Inspectable properties
 
-	/// String identifier, used for voiceover to identify which picker is selected
+	/// String identifier, used for voiceover to identify which picker is selected and for saving recents
 	@IBInspectable public var name: String = "" {
 		didSet {
 			self.colorPickerStack.setName(name: self.name)
+			if !self.name.isEmpty {
+				self.recentsUserDefaultsKey = "\(self.name).__RecentColors"
+			}
+			else {
+				self.recentsUserDefaultsKey = nil
+			}
 		}
 	}
 
@@ -133,12 +139,15 @@ import Cocoa
 	///
 	var allColorButtons: [DSFColorPickerButton] = []
 
+	/// The recents userDefaults keys
+	internal var recentsUserDefaultsKey: String?
+
 	override init(frame frameRect: NSRect) {
 		super.init(frame: frameRect)
 		self.setup()
 
 		// Set an initial theme for the view
-		self.configureTheme()
+		//self.configureTheme()
 	}
 
 	public required init?(coder decoder: NSCoder) {

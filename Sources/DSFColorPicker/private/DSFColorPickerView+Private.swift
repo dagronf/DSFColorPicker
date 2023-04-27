@@ -94,11 +94,24 @@ private extension DSFColorPickerView {
 		self.saveRecents()
 	}
 
+	@objc private func buttonPress(_ sender: DSFColorPickerButton) {
+		if let color = sender.color {
+			self.selectedColor = color
+			self.updateRecents(color)
+		}
+	}
+}
+
+extension DSFColorPickerView {
+	private var userDefaultName: String { "\(self.name).RecentColors" }
+	/// attempt to load recents for this (named) color picker from the userdefaults
 	func loadRecents() {
-		if !self.name.isEmpty,
-			let data = UserDefaults.standard.data(forKey: "\(self.name).RecentColors"),
-			let recents = NSUnarchiver.unarchiveObject(with: data) as? [NSColor?],
-			let theme = self.selectedTheme {
+		guard let recentsDefaultsName = self.recentsUserDefaultsKey else { return }
+		if
+			let data = UserDefaults.standard.data(forKey: recentsDefaultsName),
+			let recents = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data) as? [NSColor?],
+			let theme = self.selectedTheme
+		{
 			let arrsiz = min(recents.count, theme.colCount)
 			self.recentColors = Array(recents[0 ..< arrsiz])
 		} else {
@@ -106,16 +119,17 @@ private extension DSFColorPickerView {
 		}
 	}
 
+	/// Save the recents to the userdefaults
 	func saveRecents() {
-		let data = NSArchiver.archivedData(withRootObject: self.recentColors)
-		UserDefaults.standard.set(data, forKey: "\(self.name).RecentColors")
+		guard let recentsDefaultsName = self.recentsUserDefaultsKey else { return }
+		let data = try! NSKeyedArchiver.archivedData(withRootObject: self.recentColors, requiringSecureCoding: true)
+		UserDefaults.standard.set(data, forKey: recentsDefaultsName)
 	}
 
-	@objc private func buttonPress(_ sender: DSFColorPickerButton) {
-		if let color = sender.color {
-			self.selectedColor = color
-			self.updateRecents(color)
-		}
+	/// Clear the recent colors
+	public func clearRecents() {
+		guard let recentsDefaultsName = self.recentsUserDefaultsKey else { return }
+		UserDefaults.standard.removeObject(forKey: recentsDefaultsName)
 	}
 }
 

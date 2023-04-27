@@ -116,7 +116,6 @@ extension DSFColorPickerUI {
 		picker.showColorDropper = self.displaySettings.contains(.colorDropper)
 		picker.showColorPaletteButton = self.displaySettings.contains(.colorPicker)
 		picker.selectedTheme = DSFColorPickerView.defaultThemes.theme(named: "default")
-		picker.selectedColor = NSColor(self.selectedColor)
 		picker.colorSelectedCallback = { newColor in
 			let rgb = RGBAColor(newColor ?? .clear) ?? RGBAColor()
 			let c = Color(.sRGB, red: rgb.R, green: rgb.G, blue: rgb.B, opacity: rgb.A)
@@ -128,6 +127,9 @@ extension DSFColorPickerUI {
 		if let theme = self.theme {
 			picker.selectedTheme = theme
 		}
+
+		// Lastly, set the selected color
+		picker.selectedColor = NSColor(self.selectedColor)
 
 		return v
 	}

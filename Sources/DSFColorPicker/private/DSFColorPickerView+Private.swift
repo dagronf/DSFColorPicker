@@ -47,13 +47,13 @@ extension DSFColorPickerView {
 			self.setContentCompressionResistancePriority(.required, for: .horizontal)
 			self.setContentCompressionResistancePriority(.required, for: .vertical)
 
-			let selColorLabel = NSLocalizedString("Color selector", comment: "Accessibility label")
+			let selColorLabel = _NSLS_("picker.title.blank")
 			self.setAccessibilityLabel(selColorLabel)
 			self.setAccessibilityRole(NSAccessibility.Role.group)
 		}
 
 		func setName(name: String) {
-			let selColorLabel = NSLocalizedString("%1@ Color Selector", comment: "Accessibility label")
+			let selColorLabel = _NSLS_("picker.title.named")
 			let label = String(format: selColorLabel, name)
 			self.setAccessibilityLabel(label)
 		}
@@ -180,10 +180,10 @@ extension DSFColorPickerView {
 
 		self.colorPickerStack.arrangedSubviews.forEach { self.colorPickerStack.removeArrangedSubview($0) }
 
-		let selColorLabel = NSLocalizedString("Selected", comment: "The currently selected color")
-		let recColorLabel = NSLocalizedString("Recent", comment: "The set of previously selected colors")
-		let preColorLabel = NSLocalizedString("Preset", comment: "The set of predefined colors")
-		let themeColorLabel = NSLocalizedString("Themes", comment: "The available themes to choose from")
+		let selColorLabel = _NSLS_("picker.label.selected")
+		let recColorLabel = _NSLS_("picker.label.recent")
+		let preColorLabel = _NSLS_("picker.label.preset")
+		let themeColorLabel = _NSLS_("picker.label.themes")
 
 		// If themes are enabled, show the popup
 
@@ -305,10 +305,7 @@ extension DSFColorPickerView {
 			picker.image!.isTemplate = true
 			picker.action = #selector(self.colorPicker(_:))
 			picker.target = self
-			picker.toolTip =
-				NSLocalizedString(
-					"Pick a color on the screen",
-					comment: "Displays a color loupe to allow the user to select a color on the screen")
+			picker.toolTip = _NSLS_("picker.colorpicker.tooltip")
 			hStack.addArrangedSubview(picker)
 
 			let c1 = NSLayoutConstraint.init(

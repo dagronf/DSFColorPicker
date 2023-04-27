@@ -77,3 +77,7 @@ extension NSColor {
 		return n1.isMostlyEqualTo(n2)
 	}
 }
+
+func _NSLS_(_ message: String) -> String {
+	NSLocalizedString(message, bundle: Bundle.module, comment: "")
+}

@@ -1,0 +1,26 @@
+
+// Localizations
+
+// Present the system color panel and allow the user to select a color
+"picker.show.system.color.panel" = "Show the system color panel";
+
+// A generic accessibility title for the color picker
+"picker.title.blank" = "Color selector";
+
+// A named accessibility title for the color picker
+"picker.title.named" = "%1@ Color Selector";
+
+// The title for the currently selected color field
+"picker.label.selected" = "Selected";
+
+// The title for the recent colors field
+"picker.label.recent" = "Recent";
+
+// The title for the preset colors
+"picker.label.preset" = "Preset";
+
+// The title for the theme picker
+"picker.label.themes" = "Themes";
+
+// The title of a button that displays a color loupe to allow the user to select a color on the screen
+"picker.colorpicker.tooltip" = "Pick a color on the screen";

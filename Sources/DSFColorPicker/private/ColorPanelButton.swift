@@ -46,7 +46,7 @@ internal class ColorPanelButton: NSButton, DSFAppearanceCacheNotifiable {
 		self.translatesAutoresizingMaskIntoConstraints = false
 		self.wantsLayer = true
 
-		self.toolTip = NSLocalizedString("Show the system color panel", comment: "")
+		self.toolTip = _NSLS_("picker.show.system.color.panel")
 
 		self.layer!.cornerRadius = 4
 		self.layer!.borderWidth = 3

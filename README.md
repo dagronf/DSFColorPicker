@@ -26,6 +26,19 @@ Add `https://github.com/dagronf/DSFColorPicker` to your project
 
 You can add a `DSFColorPickerUI` to your SwiftUI view to display a DSFColorPicker in your SwiftUI content.
 
+Parameters
+
+| Parameter         | Desciption                                             |
+|-------------------|--------------------------------------------------------|
+| `name`            | The name for the picker (eg. 'Stroke color')           |
+| `theme`           | The theme to use, or nil to use the default colors     |
+| `cellSize`        | The size of each color cell                            |
+| `spacing`         | The spacing between each color cell                    |
+| `displaySettings` | The components of the color picker to present          |
+| `selectedColor`   | A binding to the selected color                        |
+
+#### Example
+
 ```swift
 struct MyContent: View {
    @State var selectedColor: Color = .red
@@ -33,10 +46,18 @@ struct MyContent: View {
       ...
       DSFColorPickerUI(
          named: "My color picker",
+         theme: miniColorTheme,
          selectedColor: $selectedColor
       )
    )
 }
+
+let miniColorTheme = DSFColorPickerTheme(name: "Basic Colors", argbValueGrid: [
+	[0xF5402C, 0xEB1360, 0x9C1BB1, 0x6634B8, 0x3D4DB7],
+	[0x47AE4A, 0x009687, 0x01BBD5, 0x00A6F6, 0x0C93F5],
+	[0x89C43F, 0xCCDD1E, 0xFFEC17, 0xFEC001, 0xFF9800],
+	[0x000000, 0x5E7C8B, 0x9D9D9D, 0x7A5447, 0xFF5506],
+])
 ```
 
 ### Interface builder

@@ -30,6 +30,13 @@ public struct DSFColorPickerUI: NSViewRepresentable {
 	/// The currently selected color
 	@Binding var selectedColor: Color
 	/// Create a color picker
+	/// - Parameters:
+	///   - name: The name for the picker (eg. 'Stroke color')
+	///   - theme: The theme to use, or nil to use the default colors
+	///   - cellSize: The size of each color cell
+	///   - spacing: The spacing between each color cell
+	///   - displaySettings: The components of the color picker to present
+	///   - selectedColor: A binding to the selected color
 	public init(
 		named name: String? = nil,
 		theme: DSFColorPickerTheme? = DSFColorPickerUI.DefaultTheme,
@@ -47,6 +54,13 @@ public struct DSFColorPickerUI: NSViewRepresentable {
 	}
 
 	/// Create a color picker
+	/// - Parameters:
+	///   - name: The name for the picker (eg. 'Stroke color')
+	///   - theme: The theme to use, or nil to use the default colors
+	///   - cellSize: The size of each color cell
+	///   - spacing: The spacing between each color cell
+	///   - displaySettings: The components of the color picker to present
+	///   - selectedColor: A binding to the selected color
 	public init(
 		named name: String? = nil,
 		theme: DSFColorPickerTheme? = DSFColorPickerUI.DefaultTheme,

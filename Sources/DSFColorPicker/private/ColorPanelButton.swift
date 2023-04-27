@@ -1,5 +1,5 @@
 //
-//  ColorPickerButton.swift
+//  ColorPanelButton.swift
 //
 //  Copyright © 2023 Darren Ford. All rights reserved.
 //
@@ -26,7 +26,7 @@ import DSFAppearanceManager
 
 // Internal class for displaying the system color panel and handling the
 // well interactions
-internal class ColorPickerButton: NSButton, DSFAppearanceCacheNotifiable {
+internal class ColorPanelButton: NSButton, DSFAppearanceCacheNotifiable {
 	override init(frame frameRect: NSRect) {
 		super.init(frame: frameRect)
 		self.setup()
@@ -145,7 +145,7 @@ internal class ColorPickerButton: NSButton, DSFAppearanceCacheNotifiable {
 	}
 }
 
-private extension ColorPickerButton {
+private extension ColorPanelButton {
 	// A fake color well that observes its activated state
 	// (it appears we can't directly observe \.isActivated via KVO)
 	private class FakeColorWell: NSColorWell {

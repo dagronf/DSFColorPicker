@@ -324,7 +324,7 @@ extension DSFColorPickerView {
 		}
 
 		if self.showColorPaletteButton {
-			let c = ColorPickerButton()
+			let c = ColorPanelButton()
 			c.colorChange = { [weak self] color in
 				self?.selectedColor = color
 			}

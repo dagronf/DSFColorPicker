@@ -22,9 +22,22 @@ Add `https://github.com/dagronf/DSFColorPicker` to your project
 
 ## Configuration
 
-Unfortunately, Xcode has a LOT of problems displaying `@IBDesignable` content in Interface Builder if the content comes from a Swift Package.  Sometimes it displays, sometimes it doesn't and displays an error about tvOS. I've reported this to Apple in many forms over the years and nothing has been done about it - my guess is the emphasis is moving heavily to SwiftUI previews and this bug is becoming less and less relevant to them.
+### SwiftUI
 
-So what does this mean?  You will still be able to create and configure your color picker within Interface Builder, however the pretty previews may or may not display in Interface Builder. Your app  will display fine, its just that IB has platform problems when it comes to Swift Package imports.
+You can add a `DSFColorPickerUI` to your SwiftUI view to display a DSFColorPicker in your SwiftUI content.
+
+```swift
+struct MyContent: View {
+   @State var selectedColor: Color = .red
+   var body: some View {
+      ...
+      DSFColorPickerUI(
+         named: "My color picker",
+         selectedColor: $selectedColor
+      )
+   )
+}
+```
 
 ### Interface builder
 
@@ -117,6 +130,10 @@ Dynamically adjusts to high-contrast display modes
 
 # Changes
 
+## `3.0.0`
+
+* SwiftUI support
+
 ## `2.0.0`
 
 * Updated the package to depend on the [`DSFColorSampler`](https://github.com/dagronf/DSFColorSampler) package instead of embedding an older version of the source.
@@ -134,7 +151,7 @@ MIT. Use it for anything you want, just attribute my work. Let me know if you do
 ```
 MIT License
 
-Copyright (c) 2021 Darren Ford
+Copyright (c) 2023 Darren Ford
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

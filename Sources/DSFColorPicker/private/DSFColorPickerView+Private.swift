@@ -110,6 +110,7 @@ extension DSFColorPickerView {
 		if
 			let data = UserDefaults.standard.data(forKey: recentsDefaultsName),
 			let recents = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data) as? [NSColor?],
+			recents.count == self.colCount,
 			let theme = self.selectedTheme
 		{
 			let arrsiz = min(recents.count, theme.colCount)
@@ -323,7 +324,10 @@ extension DSFColorPickerView {
 		if self.showColorPaletteButton {
 			let c = ColorPanelButton()
 			c.colorChange = { [weak self] color in
+				CATransaction.begin()
+				CATransaction.setDisableActions(true)
 				self?.selectedColor = color
+				CATransaction.commit()
 			}
 			hStack.addArrangedSubview(c)
 		}
@@ -372,9 +376,10 @@ extension DSFColorPickerView {
 		var grid: [[NSView]] = []
 		var row: [NSView] = []
 		for i in 0 ..< self.colCount {
-			let bt = self.createButton(self.recentColors[i])
+			let color = i < self.recentColors.count ? self.recentColors[i] : .clear
+			let bt = self.createButton(color)
 			bt.canDrop = false
-			bt.color = self.recentColors[i]
+			bt.color = color
 			self.recentColorButtons.append(bt)
 			row.append(bt)
 		}

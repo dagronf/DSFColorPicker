@@ -1,5 +1,5 @@
 //
-//  DSFColorPicker.h
+//  DSFColorPicker+SwiftUI.swift
 //
 //  Copyright © 2023 Darren Ford. All rights reserved.
 //
@@ -19,14 +19,4 @@
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import <Cocoa/Cocoa.h>
-
-//! Project version number for DSFColorPicker.
-FOUNDATION_EXPORT double DSFColorPickerVersionNumber;
-
-//! Project version string for DSFColorPicker.
-FOUNDATION_EXPORT const unsigned char DSFColorPickerVersionString[];
-
-// In this header, you should import all the public headers of your framework using statements like #import <DSFColorPicker/PublicHeader.h>
-
-
+import Foundation

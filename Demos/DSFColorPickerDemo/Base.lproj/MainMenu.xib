@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="17132" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="21701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17132"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21701"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -692,7 +692,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="335" y="390" width="617" height="594"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1415"/>
             <view key="contentView" wantsLayer="YES" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="617" height="594"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -752,7 +752,7 @@
                                                 </gridCell>
                                                 <gridCell row="uzB-cL-MFD" column="cxT-0v-e5T" id="Mk8-Zk-BNa">
                                                     <colorWell key="contentView" bordered="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9BE-13-yw4">
-                                                        <rect key="frame" x="147" y="74" width="84" height="31"/>
+                                                        <rect key="frame" x="144" y="72" width="90" height="35"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="84" id="AE4-i4-vOi"/>
                                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="31" id="AdP-qD-hHl"/>
@@ -773,7 +773,7 @@
                                                 </gridCell>
                                                 <gridCell row="xSM-e1-cgE" column="cxT-0v-e5T" id="0eJ-Fj-kG2">
                                                     <colorWell key="contentView" bordered="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aqX-dv-Zum">
-                                                        <rect key="frame" x="147" y="37" width="84" height="31"/>
+                                                        <rect key="frame" x="144" y="35" width="90" height="35"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="31" id="bR2-qq-fML"/>
                                                             <constraint firstAttribute="width" constant="84" id="cCz-TO-EZd"/>
@@ -793,7 +793,7 @@
                                                 </gridCell>
                                                 <gridCell row="a20-Pp-rxQ" column="cxT-0v-e5T" id="kYk-vB-tch">
                                                     <colorWell key="contentView" bordered="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SJV-Fe-LqK">
-                                                        <rect key="frame" x="147" y="0.0" width="84" height="31"/>
+                                                        <rect key="frame" x="144" y="-2" width="90" height="35"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="84" id="Mjs-xJ-MC3"/>
                                                             <constraint firstAttribute="height" constant="31" id="TLb-fE-iHz"/>
@@ -1052,7 +1052,7 @@
                                             </userDefinedRuntimeAttributes>
                                         </customView>
                                         <customView translatesAutoresizingMaskIntoConstraints="NO" id="1VV-0g-OJW" customClass="ApplePreviewPickerView" customModule="DSFColorPickerDemo" customModuleProvider="target">
-                                            <rect key="frame" x="17" y="211" width="191" height="208"/>
+                                            <rect key="frame" x="17" y="183" width="191" height="236"/>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="string" keyPath="namedTheme" value="Preview"/>
                                                 <userDefinedRuntimeAttribute type="string" keyPath="name" value="Preview"/>
@@ -1095,10 +1095,10 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yqw-qP-KaS">
-                                            <rect key="frame" x="221" y="201" width="129" height="131"/>
+                                            <rect key="frame" x="218" y="196" width="135" height="140"/>
                                             <subviews>
                                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ti4-yy-g49">
-                                                    <rect key="frame" x="-2" y="115" width="108" height="18"/>
+                                                    <rect key="frame" x="-2" y="123" width="112" height="18"/>
                                                     <buttonCell key="cell" type="check" title="Show Themes" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Smw-xj-HHQ">
                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                         <font key="font" metaFont="system"/>
@@ -1108,7 +1108,7 @@
                                                     </connections>
                                                 </button>
                                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RC3-CI-VoG">
-                                                    <rect key="frame" x="-2" y="93" width="108" height="18"/>
+                                                    <rect key="frame" x="-2" y="99" width="112" height="18"/>
                                                     <buttonCell key="cell" type="check" title="Show Recents" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="byD-R8-JZf">
                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                         <font key="font" metaFont="system"/>
@@ -1118,7 +1118,7 @@
                                                     </connections>
                                                 </button>
                                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="M1r-RR-Zt9">
-                                                    <rect key="frame" x="-2" y="71" width="105" height="18"/>
+                                                    <rect key="frame" x="-2" y="75" width="109" height="18"/>
                                                     <buttonCell key="cell" type="check" title="Show Current" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="sCd-vr-h0d">
                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                         <font key="font" metaFont="system"/>
@@ -1128,7 +1128,7 @@
                                                     </connections>
                                                 </button>
                                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oax-Ky-VAq">
-                                                    <rect key="frame" x="-2" y="49" width="92" height="18"/>
+                                                    <rect key="frame" x="-2" y="51" width="96" height="18"/>
                                                     <buttonCell key="cell" type="check" title="Show Titles" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="FNo-2r-dyh">
                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                         <font key="font" metaFont="system"/>
@@ -1138,7 +1138,7 @@
                                                     </connections>
                                                 </button>
                                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="MDq-U8-n4W">
-                                                    <rect key="frame" x="-2" y="27" width="133" height="18"/>
+                                                    <rect key="frame" x="-2" y="27" width="137" height="18"/>
                                                     <buttonCell key="cell" type="check" title="Show Color Picker" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="R2f-51-uJc">
                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                         <font key="font" metaFont="system"/>
@@ -1148,7 +1148,7 @@
                                                     </connections>
                                                 </button>
                                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="A4K-z8-4r1">
-                                                    <rect key="frame" x="-6" y="-7" width="127" height="32"/>
+                                                    <rect key="frame" x="-7" y="-7" width="121" height="32"/>
                                                     <buttonCell key="cell" type="push" title="Show Popover" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="AB6-NI-HFp">
                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                         <font key="font" metaFont="system"/>
@@ -1199,6 +1199,9 @@
     <designables>
         <designable name="1E0-1p-Pq8">
             <size key="intrinsicContentSize" width="130" height="162"/>
+        </designable>
+        <designable name="1VV-0g-OJW">
+            <size key="intrinsicContentSize" width="191" height="236"/>
         </designable>
         <designable name="5LC-kd-ocC">
             <size key="intrinsicContentSize" width="129" height="175"/>

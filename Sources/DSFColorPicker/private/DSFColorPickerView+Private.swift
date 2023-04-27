@@ -1,9 +1,7 @@
 //
 //  DSFColorPickerView+Private.swift
-//  DSFColorPicker
 //
-//  Created by Darren Ford on 2/1/19.
-//  Copyright © 2019 Darren Ford. All rights reserved.
+//  Copyright © 2023 Darren Ford. All rights reserved.
 //
 //  MIT license
 //

@@ -1,9 +1,7 @@
 //
 //  DSFColorPickerViewController.swift
-//  ColorPicker
 //
-//  Created by Darren Ford on 10/11/18.
-//  Copyright © 2018 QSR International. All rights reserved.
+//  Copyright © 2023 Darren Ford. All rights reserved.
 //
 //  MIT license
 //

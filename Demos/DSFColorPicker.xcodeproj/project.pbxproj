@@ -12,6 +12,7 @@
 		233009CF29F9F2C4008568A3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233009CE29F9F2C4008568A3 /* ContentView.swift */; };
 		233009D129F9F2C5008568A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 233009D029F9F2C5008568A3 /* Assets.xcassets */; };
 		233009D429F9F2C5008568A3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 233009D329F9F2C5008568A3 /* Preview Assets.xcassets */; };
+		233009DA29F9F553008568A3 /* DSFColorPicker in Frameworks */ = {isa = PBXBuildFile; productRef = 233009D929F9F553008568A3 /* DSFColorPicker */; };
 		233859F22658766300F1C869 /* DSFColorPicker in Frameworks */ = {isa = PBXBuildFile; productRef = 233859F12658766300F1C869 /* DSFColorPicker */; };
 		2361559321DB404E008ABF4E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2361559221DB404E008ABF4E /* AppDelegate.swift */; };
 		2361559521DB404F008ABF4E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2361559421DB404F008ABF4E /* Assets.xcassets */; };
@@ -52,6 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				233009DA29F9F553008568A3 /* DSFColorPicker in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -142,6 +144,9 @@
 			dependencies = (
 			);
 			name = "ColorPicker SwiftUI Test";
+			packageProductDependencies = (
+				233009D929F9F553008568A3 /* DSFColorPicker */,
+			);
 			productName = "ColorPicker SwiftUI Test";
 			productReference = 233009CA29F9F2C4008568A3 /* ColorPicker SwiftUI Test.app */;
 			productType = "com.apple.product-type.application";
@@ -289,7 +294,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.dagronf.dsfcolorpicker.ColorPicker-SwiftUI-Test";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -319,7 +324,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.dagronf.dsfcolorpicker.ColorPicker-SwiftUI-Test";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -533,6 +538,10 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		233009D929F9F553008568A3 /* DSFColorPicker */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DSFColorPicker;
+		};
 		233859F12658766300F1C869 /* DSFColorPicker */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = DSFColorPicker;

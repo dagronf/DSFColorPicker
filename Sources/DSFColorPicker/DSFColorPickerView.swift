@@ -136,6 +136,9 @@ import Cocoa
 	override init(frame frameRect: NSRect) {
 		super.init(frame: frameRect)
 		self.setup()
+
+		// Set an initial theme for the view
+		self.configureTheme()
 	}
 
 	public required init?(coder decoder: NSCoder) {

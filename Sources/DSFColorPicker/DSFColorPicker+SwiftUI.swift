@@ -19,4 +19,25 @@
 //  OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
+#if canImport(SwiftUI)
+
 import Foundation
+import SwiftUI
+
+@available(macOS 10.15, *)
+public struct DSFColorPickerUI: NSViewRepresentable {
+
+	public init() {}
+
+	public typealias NSViewType = DSFColorPickerView
+	public func makeNSView(context: Context) -> DSFColorPickerView {
+		return DSFColorPickerView()
+	}
+
+	public func updateNSView(_ nsView: DSFColorPickerView, context: Context) {
+
+	}
+
+}
+
+#endif

@@ -50,7 +50,7 @@ struct ContentView: View {
 						theme: basicColorTheme,
 						cellSize: CGSize(width: 20, height: 20),
 						spacing: 1.5,
-						displaySettings: [.current, .titles, .colorPicker],
+						displaySettings: [.current, .titles, .colorPicker, .colorDropper],
 						selectedColor: $selectedColor2
 					)
 				}

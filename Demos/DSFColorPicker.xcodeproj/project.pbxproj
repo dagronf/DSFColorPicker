@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2325D89B21DC40BE00622864 /* CustomColorPickers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2325D89A21DC40BE00622864 /* CustomColorPickers.swift */; };
+		2325D89B21DC40BE00622864 /* CustomThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2325D89A21DC40BE00622864 /* CustomThemes.swift */; };
 		233009CD29F9F2C4008568A3 /* ColorPicker_SwiftUI_TestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233009CC29F9F2C4008568A3 /* ColorPicker_SwiftUI_TestApp.swift */; };
 		233009CF29F9F2C4008568A3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 233009CE29F9F2C4008568A3 /* ContentView.swift */; };
 		233009D129F9F2C5008568A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 233009D029F9F2C5008568A3 /* Assets.xcassets */; };
@@ -17,6 +17,7 @@
 		2361559321DB404E008ABF4E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2361559221DB404E008ABF4E /* AppDelegate.swift */; };
 		2361559521DB404F008ABF4E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2361559421DB404F008ABF4E /* Assets.xcassets */; };
 		2361559821DB404F008ABF4E /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2361559621DB404F008ABF4E /* MainMenu.xib */; };
+		2382CA0E29FDD38700388E08 /* CustomThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2382CA0D29FDD38700388E08 /* CustomThemes.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -32,7 +33,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		2325D89A21DC40BE00622864 /* CustomColorPickers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColorPickers.swift; sourceTree = "<group>"; };
+		2325D89A21DC40BE00622864 /* CustomThemes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomThemes.swift; sourceTree = "<group>"; };
 		233009CA29F9F2C4008568A3 /* ColorPicker SwiftUI Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ColorPicker SwiftUI Test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		233009CC29F9F2C4008568A3 /* ColorPicker_SwiftUI_TestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPicker_SwiftUI_TestApp.swift; sourceTree = "<group>"; };
 		233009CE29F9F2C4008568A3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -45,6 +46,7 @@
 		2361559421DB404F008ABF4E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2361559721DB404F008ABF4E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		2361559921DB404F008ABF4E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2382CA0D29FDD38700388E08 /* CustomThemes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomThemes.swift; sourceTree = "<group>"; };
 		23C4CEF124D3BACA0030C8DC /* DSFColorPickerDemo.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = DSFColorPickerDemo.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -73,6 +75,7 @@
 			children = (
 				233009CC29F9F2C4008568A3 /* ColorPicker_SwiftUI_TestApp.swift */,
 				233009CE29F9F2C4008568A3 /* ContentView.swift */,
+				2382CA0D29FDD38700388E08 /* CustomThemes.swift */,
 				233009D029F9F2C5008568A3 /* Assets.xcassets */,
 				233009D529F9F2C5008568A3 /* ColorPicker_SwiftUI_Test.entitlements */,
 				233009D229F9F2C5008568A3 /* Preview Content */,
@@ -112,7 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				2361559221DB404E008ABF4E /* AppDelegate.swift */,
-				2325D89A21DC40BE00622864 /* CustomColorPickers.swift */,
+				2325D89A21DC40BE00622864 /* CustomThemes.swift */,
 				2361559421DB404F008ABF4E /* Assets.xcassets */,
 				2361559621DB404F008ABF4E /* MainMenu.xib */,
 				2361559921DB404F008ABF4E /* Info.plist */,
@@ -239,6 +242,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				233009CF29F9F2C4008568A3 /* ContentView.swift in Sources */,
+				2382CA0E29FDD38700388E08 /* CustomThemes.swift in Sources */,
 				233009CD29F9F2C4008568A3 /* ColorPicker_SwiftUI_TestApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -247,7 +251,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2325D89B21DC40BE00622864 /* CustomColorPickers.swift in Sources */,
+				2325D89B21DC40BE00622864 /* CustomThemes.swift in Sources */,
 				2361559321DB404E008ABF4E /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

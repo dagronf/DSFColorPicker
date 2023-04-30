@@ -37,9 +37,9 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSPopoverDelegate {
 	@IBOutlet var second: DSFColorPickerView!
 	@IBOutlet var third: DSFColorPickerView!
 
-	@IBOutlet var changeable: CustomPickerView!
+	@IBOutlet var changeable: DSFColorPickerView!
 
-	@objc var showThemes: Bool = true
+	@objc var showPalettes: Bool = true
 	@objc var showRecents: Bool = true
 	@objc var showCurrent: Bool = true
 	@objc var showTitles: Bool = true
@@ -82,20 +82,18 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSPopoverDelegate {
 	}
 
 	@IBAction func showPopover(_ sender: NSButton) {
-		let ps = DefaultPickerViewThemes()
-		if let theme = ps.theme(named: "default") {
-			self.popover.showPopover(
-				named: "popover1",
-				theme: theme,
-				showThemes: self.showThemes,
-				showCurrent: self.showCurrent,
-				showRecents: self.showRecents,
-				showTitles: self.showTitles,
-				showColorDropper: self.showPicker,
-				showColorPanelButton: true,
-				sender: sender,
-				preferredEdge: .maxX
-			)
-		}
+		let theme = DefaultPickerViewTheme()
+		self.popover.showPopover(
+			named: "popover1",
+			theme: theme,
+			showPalettes: self.showPalettes,
+			showCurrent: self.showCurrent,
+			showRecents: self.showRecents,
+			showTitles: self.showTitles,
+			showColorDropper: self.showPicker,
+			showColorPanelButton: true,
+			sender: sender,
+			preferredEdge: .maxX
+		)
 	}
 }

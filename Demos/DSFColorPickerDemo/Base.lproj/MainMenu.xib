@@ -15,7 +15,7 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="DSFColorPickerDemo" customModuleProvider="target">
             <connections>
-                <outlet property="changeable" destination="8BO-Yy-vNs" id="ClQ-g9-Mnj"/>
+                <outlet property="changeable" destination="8BO-Yy-vNs" id="E2z-xz-jW3"/>
                 <outlet property="colorPickerByNotificationColorWell" destination="9BE-13-yw4" id="6aL-Vr-Jgx"/>
                 <outlet property="colorPickerView" destination="Ji4-zQ-Vzb" id="D9c-Gs-ibF"/>
                 <outlet property="colorPickerViewSelectedColorWell" destination="aqX-dv-Zum" id="vlx-Jh-Ds3"/>
@@ -694,20 +694,20 @@
             <rect key="contentRect" x="335" y="390" width="617" height="594"/>
             <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1415"/>
             <view key="contentView" wantsLayer="YES" id="EiT-Mj-1SZ">
-                <rect key="frame" x="0.0" y="0.0" width="617" height="594"/>
+                <rect key="frame" x="0.0" y="0.0" width="617" height="595"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <tabView translatesAutoresizingMaskIntoConstraints="NO" id="CiF-uG-ZOi">
-                        <rect key="frame" x="13" y="2" width="591" height="578"/>
+                        <rect key="frame" x="13" y="10" width="591" height="571"/>
                         <font key="font" metaFont="system"/>
                         <tabViewItems>
                             <tabViewItem label="Simple" identifier="" id="8QB-E2-nq8" userLabel="Simple">
                                 <view key="view" id="Bkr-K7-yhu">
-                                    <rect key="frame" x="10" y="33" width="571" height="532"/>
+                                    <rect key="frame" x="10" y="33" width="571" height="525"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <customView wantsLayer="YES" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" placeholderIntrinsicWidth="250" placeholderIntrinsicHeight="348" translatesAutoresizingMaskIntoConstraints="NO" id="Ji4-zQ-Vzb" customClass="DefaultPickerView" customModule="DSFColorPickerDemo" customModuleProvider="target">
-                                            <rect key="frame" x="304" y="161" width="250" height="348"/>
+                                        <customView wantsLayer="YES" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" placeholderIntrinsicWidth="250" placeholderIntrinsicHeight="348" translatesAutoresizingMaskIntoConstraints="NO" id="Ji4-zQ-Vzb" customClass="DSFColorPickerView" customModule="DSFColorPicker">
+                                            <rect key="frame" x="304" y="154" width="250" height="348"/>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="cellWidth">
                                                     <real key="value" value="35"/>
@@ -724,12 +724,16 @@
                                                     <real key="value" value="4"/>
                                                 </userDefinedRuntimeAttribute>
                                                 <userDefinedRuntimeAttribute type="string" keyPath="namedTheme" value="default"/>
-                                                <userDefinedRuntimeAttribute type="boolean" keyPath="showThemes" value="NO"/>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="showPalettes" value="NO"/>
                                                 <userDefinedRuntimeAttribute type="string" keyPath="name" value="Primary"/>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="showColorPaletteButton" value="YES"/>
                                             </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <outlet property="theme" destination="k74-K9-AZc" id="wHZ-e8-Pkj"/>
+                                            </connections>
                                         </customView>
                                         <gridView xPlacement="trailing" yPlacement="center" rowAlignment="none" columnSpacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="H8h-kB-yNH">
-                                            <rect key="frame" x="323" y="33" width="231" height="105"/>
+                                            <rect key="frame" x="323" y="26" width="231" height="105"/>
                                             <rows>
                                                 <gridRow id="uzB-cL-MFD"/>
                                                 <gridRow id="xSM-e1-cgE"/>
@@ -807,7 +811,7 @@
                                             </gridCells>
                                         </gridView>
                                         <customView horizontalHuggingPriority="900" verticalHuggingPriority="900" horizontalCompressionResistancePriority="900" verticalCompressionResistancePriority="900" placeholderIntrinsicWidth="135" placeholderIntrinsicHeight="178" translatesAutoresizingMaskIntoConstraints="NO" id="5LC-kd-ocC" customClass="DSFColorPickerView" customModule="DSFColorPicker">
-                                            <rect key="frame" x="17" y="334" width="135" height="178"/>
+                                            <rect key="frame" x="17" y="327" width="135" height="178"/>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="showRecents" value="YES"/>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="cellWidth">
@@ -819,14 +823,17 @@
                                                 <userDefinedRuntimeAttribute type="number" keyPath="horizontalSpacing">
                                                     <real key="value" value="1"/>
                                                 </userDefinedRuntimeAttribute>
-                                                <userDefinedRuntimeAttribute type="string" keyPath="namedTheme" value="default"/>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="verticalSpacing">
                                                     <real key="value" value="1"/>
                                                 </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="namedTheme" value="default"/>
                                             </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <outlet property="theme" destination="k74-K9-AZc" id="677-d8-Qij"/>
+                                            </connections>
                                         </customView>
                                         <customView horizontalHuggingPriority="900" verticalHuggingPriority="900" horizontalCompressionResistancePriority="900" verticalCompressionResistancePriority="900" placeholderIntrinsicWidth="210" placeholderIntrinsicHeight="234" translatesAutoresizingMaskIntoConstraints="NO" id="T6p-FI-ULP" customClass="DSFColorPickerView" customModule="DSFColorPicker">
-                                            <rect key="frame" x="17" y="81" width="210" height="234"/>
+                                            <rect key="frame" x="17" y="74" width="210" height="234"/>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="showRecents" value="NO"/>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="cellWidth">
@@ -838,12 +845,15 @@
                                                 <userDefinedRuntimeAttribute type="number" keyPath="horizontalSpacing">
                                                     <real key="value" value="6"/>
                                                 </userDefinedRuntimeAttribute>
-                                                <userDefinedRuntimeAttribute type="string" keyPath="namedTheme" value="default"/>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="verticalSpacing">
                                                     <real key="value" value="5"/>
                                                 </userDefinedRuntimeAttribute>
                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="showColorDropper" value="NO"/>
+                                                <userDefinedRuntimeAttribute type="string" keyPath="namedTheme" value="muted"/>
                                             </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <outlet property="theme" destination="k74-K9-AZc" id="ZjO-zg-7d3"/>
+                                            </connections>
                                         </customView>
                                     </subviews>
                                     <constraints>
@@ -862,16 +872,16 @@
                             </tabViewItem>
                             <tabViewItem label="Mode" identifier="" id="d0l-RW-Ibw">
                                 <view key="view" id="7ta-q5-pR5">
-                                    <rect key="frame" x="10" y="33" width="571" height="532"/>
+                                    <rect key="frame" x="10" y="33" width="571" height="524"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <stackView distribution="equalSpacing" orientation="horizontal" alignment="top" spacing="31" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YTw-Pn-SpU">
-                                            <rect key="frame" x="109" y="166" width="354" height="200"/>
+                                            <rect key="frame" x="109" y="162" width="354" height="200"/>
                                             <subviews>
                                                 <visualEffectView wantsLayer="YES" appearanceType="vibrantDark" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" blendingMode="behindWindow" material="underWindowBackground" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="qX9-bI-sD3" userLabel="Dark Mode">
                                                     <rect key="frame" x="0.0" y="0.0" width="160" height="200"/>
                                                     <subviews>
-                                                        <customView wantsLayer="YES" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" placeholderIntrinsicWidth="147" placeholderIntrinsicHeight="182" translatesAutoresizingMaskIntoConstraints="NO" id="1E0-1p-Pq8" customClass="DefaultPickerView" customModule="DSFColorPickerDemo" customModuleProvider="target">
+                                                        <customView wantsLayer="YES" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" placeholderIntrinsicWidth="147" placeholderIntrinsicHeight="182" translatesAutoresizingMaskIntoConstraints="NO" id="1E0-1p-Pq8" customClass="DSFColorPickerView" customModule="DSFColorPicker">
                                                             <rect key="frame" x="8" y="8" width="147" height="182"/>
                                                             <userDefinedRuntimeAttributes>
                                                                 <userDefinedRuntimeAttribute type="number" keyPath="cellWidth">
@@ -891,6 +901,9 @@
                                                                 </userDefinedRuntimeAttribute>
                                                                 <userDefinedRuntimeAttribute type="string" keyPath="namedTheme" value="muted"/>
                                                             </userDefinedRuntimeAttributes>
+                                                            <connections>
+                                                                <outlet property="theme" destination="k74-K9-AZc" id="28h-bY-vWO"/>
+                                                            </connections>
                                                         </customView>
                                                     </subviews>
                                                     <constraints>
@@ -903,7 +916,7 @@
                                                 <visualEffectView wantsLayer="YES" appearanceType="vibrantLight" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" blendingMode="behindWindow" material="underWindowBackground" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="a2D-S6-Gq9" userLabel="Light Mode">
                                                     <rect key="frame" x="191" y="2" width="163" height="198"/>
                                                     <subviews>
-                                                        <customView wantsLayer="YES" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" placeholderIntrinsicWidth="147" placeholderIntrinsicHeight="182" translatesAutoresizingMaskIntoConstraints="NO" id="QeL-gc-Bu7" customClass="DefaultPickerView" customModule="DSFColorPickerDemo" customModuleProvider="target">
+                                                        <customView wantsLayer="YES" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" placeholderIntrinsicWidth="147" placeholderIntrinsicHeight="182" translatesAutoresizingMaskIntoConstraints="NO" id="QeL-gc-Bu7" customClass="DSFColorPickerView" customModule="DSFColorPicker">
                                                             <rect key="frame" x="8" y="8" width="147" height="182"/>
                                                             <userDefinedRuntimeAttributes>
                                                                 <userDefinedRuntimeAttribute type="number" keyPath="cellWidth">
@@ -923,6 +936,9 @@
                                                                 </userDefinedRuntimeAttribute>
                                                                 <userDefinedRuntimeAttribute type="string" keyPath="namedTheme" value="muted"/>
                                                             </userDefinedRuntimeAttributes>
+                                                            <connections>
+                                                                <outlet property="theme" destination="k74-K9-AZc" id="BdK-Ec-aLB"/>
+                                                            </connections>
                                                         </customView>
                                                     </subviews>
                                                     <constraints>
@@ -954,7 +970,7 @@
                                     <rect key="frame" x="10" y="33" width="571" height="532"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <customView wantsLayer="YES" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" placeholderIntrinsicWidth="296" placeholderIntrinsicHeight="399" translatesAutoresizingMaskIntoConstraints="NO" id="8BO-Yy-vNs" customClass="CustomPickerView" customModule="DSFColorPickerDemo" customModuleProvider="target">
+                                        <customView wantsLayer="YES" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" placeholderIntrinsicWidth="296" placeholderIntrinsicHeight="399" translatesAutoresizingMaskIntoConstraints="NO" id="8BO-Yy-vNs" customClass="DSFColorPickerView" customModule="DSFColorPicker">
                                             <rect key="frame" x="138" y="67" width="296" height="399"/>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="cellWidth">
@@ -972,11 +988,14 @@
                                                 <userDefinedRuntimeAttribute type="number" keyPath="verticalSpacing">
                                                     <real key="value" value="7"/>
                                                 </userDefinedRuntimeAttribute>
-                                                <userDefinedRuntimeAttribute type="boolean" keyPath="showThemes" value="YES"/>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="showPalettes" value="YES"/>
                                                 <userDefinedRuntimeAttribute type="string" keyPath="namedTheme" value="Gorgeous"/>
                                                 <userDefinedRuntimeAttribute type="string" keyPath="name" value="Themed"/>
                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="showColorDropper" value="NO"/>
                                             </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <outlet property="theme" destination="hW0-v3-Hml" id="umX-12-5vj"/>
+                                            </connections>
                                         </customView>
                                     </subviews>
                                     <constraints>
@@ -990,7 +1009,7 @@
                                     <rect key="frame" x="10" y="33" width="571" height="532"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <customView wantsLayer="YES" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" placeholderIntrinsicWidth="30" placeholderIntrinsicHeight="436" translatesAutoresizingMaskIntoConstraints="NO" id="LFO-Sa-tnP" userLabel="Vertical" customClass="DefaultPickerView" customModule="DSFColorPickerDemo" customModuleProvider="target">
+                                        <customView wantsLayer="YES" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" placeholderIntrinsicWidth="30" placeholderIntrinsicHeight="436" translatesAutoresizingMaskIntoConstraints="NO" id="LFO-Sa-tnP" userLabel="Vertical" customClass="DSFColorPickerView" customModule="DSFColorPicker">
                                             <rect key="frame" x="524" y="82" width="30" height="436"/>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="cellWidth">
@@ -1011,8 +1030,11 @@
                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="showTitles" value="NO"/>
                                                 <userDefinedRuntimeAttribute type="string" keyPath="namedTheme" value="line"/>
                                             </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <outlet property="theme" destination="k74-K9-AZc" id="Bjt-51-k7g"/>
+                                            </connections>
                                         </customView>
-                                        <customView horizontalHuggingPriority="900" verticalHuggingPriority="900" horizontalCompressionResistancePriority="900" verticalCompressionResistancePriority="900" placeholderIntrinsicWidth="244" placeholderIntrinsicHeight="70" translatesAutoresizingMaskIntoConstraints="NO" id="NpG-Ix-lXL" userLabel="Horizontal" customClass="DefaultPickerView" customModule="DSFColorPickerDemo" customModuleProvider="target">
+                                        <customView horizontalHuggingPriority="900" verticalHuggingPriority="900" horizontalCompressionResistancePriority="900" verticalCompressionResistancePriority="900" placeholderIntrinsicWidth="244" placeholderIntrinsicHeight="70" translatesAutoresizingMaskIntoConstraints="NO" id="NpG-Ix-lXL" userLabel="Horizontal" customClass="DSFColorPickerView" customModule="DSFColorPicker">
                                             <rect key="frame" x="17" y="448" width="244" height="70"/>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="string" keyPath="namedTheme" value="simple"/>
@@ -1028,8 +1050,11 @@
                                                 </userDefinedRuntimeAttribute>
                                                 <userDefinedRuntimeAttribute type="string" keyPath="namedTheme" value="simple"/>
                                             </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <outlet property="theme" destination="k74-K9-AZc" id="b1x-30-tOh"/>
+                                            </connections>
                                         </customView>
-                                        <customView wantsLayer="YES" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" placeholderIntrinsicWidth="30" placeholderIntrinsicHeight="436" translatesAutoresizingMaskIntoConstraints="NO" id="KoR-a2-i1k" userLabel="Vertical" customClass="DefaultPickerView" customModule="DSFColorPickerDemo" customModuleProvider="target">
+                                        <customView wantsLayer="YES" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" placeholderIntrinsicWidth="30" placeholderIntrinsicHeight="436" translatesAutoresizingMaskIntoConstraints="NO" id="KoR-a2-i1k" userLabel="Vertical" customClass="DSFColorPickerView" customModule="DSFColorPicker">
                                             <rect key="frame" x="463" y="82" width="30" height="436"/>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="cellWidth">
@@ -1050,13 +1075,16 @@
                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="showTitles" value="NO"/>
                                                 <userDefinedRuntimeAttribute type="string" keyPath="namedTheme" value="linereversed"/>
                                             </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <outlet property="theme" destination="k74-K9-AZc" id="s7g-GK-9eC"/>
+                                            </connections>
                                         </customView>
-                                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="1VV-0g-OJW" customClass="ApplePreviewPickerView" customModule="DSFColorPickerDemo" customModuleProvider="target">
+                                        <customView ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1VV-0g-OJW" customClass="DSFColorPickerView" customModule="DSFColorPicker">
                                             <rect key="frame" x="17" y="183" width="191" height="236"/>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="string" keyPath="namedTheme" value="Preview"/>
                                                 <userDefinedRuntimeAttribute type="string" keyPath="name" value="Preview"/>
-                                                <userDefinedRuntimeAttribute type="boolean" keyPath="showThemes" value="NO"/>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="showPalettes" value="NO"/>
                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="showRecents" value="NO"/>
                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="showTitles" value="NO"/>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="cellWidth">
@@ -1073,6 +1101,9 @@
                                                 </userDefinedRuntimeAttribute>
                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="showColorPaletteButton" value="YES"/>
                                             </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <outlet property="theme" destination="fic-hI-fU5" id="eng-67-3WY"/>
+                                            </connections>
                                         </customView>
                                     </subviews>
                                     <constraints>
@@ -1104,7 +1135,7 @@
                                                         <font key="font" metaFont="system"/>
                                                     </buttonCell>
                                                     <connections>
-                                                        <binding destination="Voe-Tx-rLC" name="value" keyPath="self.showThemes" id="JrL-hK-o12"/>
+                                                        <binding destination="Voe-Tx-rLC" name="value" keyPath="self.showPalettes" id="JrL-hK-o12"/>
                                                     </connections>
                                                 </button>
                                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RC3-CI-VoG">
@@ -1188,41 +1219,23 @@
                 <constraints>
                     <constraint firstItem="CiF-uG-ZOi" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="20" id="L1X-U8-0Op"/>
                     <constraint firstAttribute="trailing" secondItem="CiF-uG-ZOi" secondAttribute="trailing" constant="20" id="Vxb-0b-0a1"/>
-                    <constraint firstAttribute="bottom" secondItem="CiF-uG-ZOi" secondAttribute="bottom" constant="12" id="dSG-O7-mDk"/>
+                    <constraint firstAttribute="bottom" secondItem="CiF-uG-ZOi" secondAttribute="bottom" constant="20" id="dSG-O7-mDk"/>
                     <constraint firstItem="CiF-uG-ZOi" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" id="g3U-9O-E9L"/>
                 </constraints>
             </view>
             <point key="canvasLocation" x="-360.5" y="-123"/>
         </window>
         <userDefaultsController representsSharedInstance="YES" id="vTd-0o-GNY"/>
+        <customObject id="k74-K9-AZc" userLabel="DefaultPickerViewTheme" customClass="DefaultPickerViewTheme" customModule="DSFColorPickerDemo" customModuleProvider="target"/>
+        <customObject id="hW0-v3-Hml" userLabel="CustomPickerView" customClass="CustomTheme" customModule="DSFColorPickerDemo" customModuleProvider="target"/>
+        <customObject id="fic-hI-fU5" customClass="ApplePreviewPickerTheme" customModule="DSFColorPickerDemo" customModuleProvider="target"/>
     </objects>
     <designables>
-        <designable name="1E0-1p-Pq8">
-            <size key="intrinsicContentSize" width="130" height="162"/>
-        </designable>
-        <designable name="1VV-0g-OJW">
-            <size key="intrinsicContentSize" width="191" height="236"/>
-        </designable>
         <designable name="5LC-kd-ocC">
             <size key="intrinsicContentSize" width="129" height="175"/>
         </designable>
-        <designable name="8BO-Yy-vNs">
-            <size key="intrinsicContentSize" width="270" height="384"/>
-        </designable>
         <designable name="Ji4-zQ-Vzb">
             <size key="intrinsicContentSize" width="230" height="330"/>
-        </designable>
-        <designable name="KoR-a2-i1k">
-            <size key="intrinsicContentSize" width="30" height="419"/>
-        </designable>
-        <designable name="LFO-Sa-tnP">
-            <size key="intrinsicContentSize" width="30" height="419"/>
-        </designable>
-        <designable name="NpG-Ix-lXL">
-            <size key="intrinsicContentSize" width="247" height="74"/>
-        </designable>
-        <designable name="QeL-gc-Bu7">
-            <size key="intrinsicContentSize" width="130" height="162"/>
         </designable>
         <designable name="T6p-FI-ULP">
             <size key="intrinsicContentSize" width="174" height="199"/>

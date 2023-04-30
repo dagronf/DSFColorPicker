@@ -52,14 +52,16 @@ public class DSFColorPickerPopover: NSObject, NSPopoverDelegate {
 	}
 
 	public func showPopover(
-		named name: String, theme: DSFColorPickerTheme,
-		showThemes: Bool = false,
+		named name: String,
+		theme: DSFColorPickerTheme,
+		showPalettes: Bool = false,
 		showCurrent: Bool = true,
 		showRecents: Bool = true,
 		showTitles: Bool = true,
 		showColorDropper: Bool = true,
 		showColorPanelButton: Bool = false,
-		sender: NSView, preferredEdge: NSRectEdge) {
+		sender: NSView, preferredEdge: NSRectEdge
+	) {
 
 		if let openPopover = self.popover {
 			openPopover.close()
@@ -73,15 +75,15 @@ public class DSFColorPickerPopover: NSObject, NSPopoverDelegate {
 		// Configure the color picker view
 
 		let colorView = viewController.configure(name: name)
-		colorView.selectedTheme = theme
-		colorView.showThemes = showThemes
+		colorView.selectedPalette = theme.first()
+		colorView.showPalettes = showPalettes
 		colorView.showCurrent = showCurrent
 		colorView.showRecents = showRecents
 		colorView.showTitles = showTitles
 		colorView.showColorDropper = showColorDropper
 		colorView.showColorPaletteButton = showColorPanelButton
 
-		colorView.updateLayoutForTheme()
+		colorView.updateLayoutForSelectedPalette()
 
 		// Configure the popover
 

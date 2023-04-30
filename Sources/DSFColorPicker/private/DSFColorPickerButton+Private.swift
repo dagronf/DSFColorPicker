@@ -23,7 +23,7 @@ import Cocoa
 
 // Internal class used by the color picker view
 
-class DSFColorPickerButton: NSButton {
+internal class DSFColorPickerButton: NSButton {
 	private var stateObserver: NSKeyValueObservation?
 	var showSelected: Bool = false {
 		didSet {

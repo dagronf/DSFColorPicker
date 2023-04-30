@@ -63,14 +63,22 @@ extension DSFColorPickerView {
 // MARK: - Theme handling
 
 extension DSFColorPickerView {
-	@objc open func themes() -> DSFColorPickerThemes {
-		// Return the built in theme
-		return DSFColorPickerView.defaultThemes
-	}
 
-	func configureTheme() {
-		if self.selectedTheme == nil, !self.namedTheme.isEmpty {
-			self.selectedTheme = self.themes().theme(named: self.namedTheme)
+	func configurePalette() {
+		if self.selectedPalette != nil {
+			return
+		}
+
+		// If the palette is named, attempt to display the named palette
+		if let namedPalette = self.namedTheme,
+			let palette = self.theme.palette(named: namedPalette)
+		{
+			self.selectedPalette = palette
+		}
+
+		if self.selectedPalette == nil {
+			// Last fallback - if the selected palette is still nil just set the first palette found
+			self.selectedPalette = self.theme.first()
 		}
 	}
 }
@@ -111,7 +119,7 @@ extension DSFColorPickerView {
 			let data = UserDefaults.standard.data(forKey: recentsDefaultsName),
 			let recents = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data) as? [NSColor?],
 			recents.count == self.colCount,
-			let theme = self.selectedTheme
+			let theme = self.selectedPalette
 		{
 			let arrsiz = min(recents.count, theme.colCount)
 			self.recentColors = Array(recents[0 ..< arrsiz])
@@ -136,7 +144,8 @@ extension DSFColorPickerView {
 
 extension DSFColorPickerView {
 	open override func awakeFromNib() {
-		self.configureTheme()
+		super.awakeFromNib()
+		self.configurePalette()
 	}
 
 	func setup() {
@@ -161,7 +170,7 @@ extension DSFColorPickerView {
 	}
 
 	open override func prepareForInterfaceBuilder() {
-		self.configureTheme()
+		self.configurePalette()
 		self.invalidateIntrinsicContentSize()
 		self.frame = self.colorPickerStack.frame
 	}
@@ -174,7 +183,7 @@ extension DSFColorPickerView {
 // MARK: - View Configuration
 
 extension DSFColorPickerView {
-	func updateLayoutForTheme() {
+	func updateLayoutForSelectedPalette() {
 		self.allColorButtons.removeAll()
 		self.recentColorButtons.removeAll()
 		self.colorPickerStack.arrangedSubviews.forEach { $0.removeFromSuperview() }
@@ -188,7 +197,7 @@ extension DSFColorPickerView {
 
 		// If themes are enabled, show the popup
 
-		if self.showThemes && self.themes().themeNames().count > 0 {
+		if self.showPalettes && self.theme.paletteNames.count > 0 {
 			if self.showTitles {
 				self.colorPickerStack.addArrangedSubview(self.configureLabel(themeColorLabel))
 			}
@@ -238,10 +247,10 @@ extension DSFColorPickerView {
 	}
 
 	@IBAction func userChangedTheme(_ sender: NSPopUpButton) {
-		let themeName = sender.title
-		if let newTheme = self.themes().theme(named: themeName) {
-			self.namedTheme = themeName
-			self.selectedTheme = newTheme
+		let paletteName = sender.title
+		if let selectedPalette = self.theme.palette(named: paletteName) {
+			self.namedTheme = paletteName
+			self.selectedPalette = selectedPalette
 		}
 	}
 
@@ -359,9 +368,12 @@ extension DSFColorPickerView {
 
 		popover.removeAllItems()
 
-		let names = self.themes().themeNames().sorted()
+		let names = self.theme.paletteNames.sorted()
 		popover.addItems(withTitles: names)
-		popover.selectItem(withTitle: self.namedTheme)
+
+		let named = self.namedTheme ?? self.theme.first().name
+
+		popover.selectItem(withTitle: named)
 
 		popover.action = #selector(self.userChangedTheme(_:))
 		popover.target = self
@@ -409,7 +421,7 @@ extension DSFColorPickerView {
 		for rowCount in 0 ..< self.rowCount {
 			var row: [NSView] = []
 			for colCount in 0 ..< self.colCount {
-				let color = self.selectedTheme?.colorAt(rowCount, colCount)
+				let color = self.selectedPalette?.colorAt(rowCount, colCount)
 				let button = self.createButton(color)
 				button.showSelected = true
 				self.allColorButtons.append(button)

@@ -25,7 +25,8 @@ extension NSColor {
 	/// Returns a flat contrasting color for this color
 	func flatContrastColor() -> NSColor {
 		if let rgbColor = self.usingColorSpace(.extendedSRGB),
-			rgbColor != NSColor.clear {
+			rgbColor != NSColor.clear
+		{
 			let r = 0.299 * rgbColor.redComponent
 			let g = 0.587 * rgbColor.greenComponent
 			let b = 0.114 * rgbColor.blueComponent
@@ -55,10 +56,12 @@ extension NSColor {
 		let red = UInt8(truncatingIfNeeded: argbValue >> 16)
 		let green = UInt8(truncatingIfNeeded: argbValue >> 8)
 		let blue = UInt8(truncatingIfNeeded: argbValue)
-		return NSColor(red: CGFloat(red) / 256.0,
-		               green: CGFloat(green) / 256.0,
-		               blue: CGFloat(blue) / 256.0,
-		               alpha: hasAlpha ? CGFloat(alpha) / 256.0 : 1.0)
+		return NSColor(
+			red: CGFloat(red) / 256.0,
+			green: CGFloat(green) / 256.0,
+			blue: CGFloat(blue) / 256.0,
+			alpha: hasAlpha ? CGFloat(alpha) / 256.0 : 1.0
+		)
 	}
 
 	/// Converts an array of UInt32 colors to an array of NSColor

@@ -39,7 +39,7 @@ public struct DSFColorPickerUI: NSViewRepresentable {
 	///   - selectedColor: A binding to the selected color
 	public init(
 		named name: String? = nil,
-		theme: DSFColorPickerTheme? = DSFColorPickerUI.DefaultTheme,
+		theme: DSFColorPickerTheme = DSFColorPickerTheme(),
 		cellSize: CGSize? = nil,
 		spacing: CGSize? = nil,
 		displaySettings: DisplaySettings = .default,
@@ -63,7 +63,7 @@ public struct DSFColorPickerUI: NSViewRepresentable {
 	///   - selectedColor: A binding to the selected color
 	public init(
 		named name: String? = nil,
-		theme: DSFColorPickerTheme? = DSFColorPickerUI.DefaultTheme,
+		theme: DSFColorPickerTheme = DSFColorPickerTheme(),
 		cellSize: CGSize? = nil,
 		spacing: CGFloat,
 		displaySettings: DisplaySettings = .default,
@@ -85,7 +85,7 @@ public struct DSFColorPickerUI: NSViewRepresentable {
 	let cellSize: CGSize?
 	let spacing: CGSize?
 	let displaySettings: DisplaySettings
-	let theme: DSFColorPickerTheme?
+	let theme: DSFColorPickerTheme
 }
 
 @available(macOS 11, *)
@@ -102,6 +102,8 @@ extension DSFColorPickerUI {
 		public static let current = DisplaySettings(rawValue: 1 << 4)
 		/// Show the system color picker
 		public static let colorPicker = DisplaySettings(rawValue: 1 << 5)
+		/// Show the palette picker
+		public static let palettes = DisplaySettings(rawValue: 1 << 6)
 		/// The default settings
 		public static let `default`: DisplaySettings = [.recents, .titles, .colorDropper, .current]
 
@@ -129,7 +131,9 @@ extension DSFColorPickerUI {
 		picker.showCurrent = self.displaySettings.contains(.current)
 		picker.showColorDropper = self.displaySettings.contains(.colorDropper)
 		picker.showColorPaletteButton = self.displaySettings.contains(.colorPicker)
-		picker.selectedTheme = DSFColorPickerView.defaultThemes.theme(named: "default")
+		picker.showPalettes = self.displaySettings.contains(.palettes)
+		picker.theme = self.theme
+		picker.selectedPalette = self.theme.first()
 		picker.colorSelectedCallback = { newColor in
 			let rgb = RGBAColor(newColor ?? .clear) ?? RGBAColor()
 			let c = Color(.sRGB, red: rgb.R, green: rgb.G, blue: rgb.B, opacity: rgb.A)
@@ -138,9 +142,8 @@ extension DSFColorPickerUI {
 			}
 		}
 
-		if let theme = self.theme {
-			picker.selectedTheme = theme
-		}
+		// Select the first palette in the theme
+		picker.selectedPalette = theme.first()
 
 		// Lastly, set the selected color
 		picker.selectedColor = NSColor(self.selectedColor)
@@ -157,7 +160,7 @@ extension DSFColorPickerUI {
 	}
 
 	/// A default color theme for the SwiftUI color picker
-	public static let DefaultTheme: DSFColorPickerTheme = {
+	public static let DefaultPalette: DSFColorPickerPalette = {
 		let colorLiterals = [
 			[#colorLiteral(red: 0.880, green: 0.929, blue: 0.831, alpha: 1), #colorLiteral(red: 0.970, green: 0.983, blue: 0.859, alpha: 1), #colorLiteral(red: 0.991, green: 0.994, blue: 0.862, alpha: 1), #colorLiteral(red: 0.997, green: 0.949, blue: 0.831, alpha: 1), #colorLiteral(red: 1.000, green: 0.928, blue: 0.833, alpha: 1), #colorLiteral(red: 1.000, green: 0.886, blue: 0.837, alpha: 1), #colorLiteral(red: 0.998, green: 0.857, blue: 0.848, alpha: 1), #colorLiteral(red: 0.971, green: 0.829, blue: 0.876, alpha: 1), #colorLiteral(red: 0.941, green: 0.790, blue: 0.998, alpha: 1), #colorLiteral(red: 0.846, green: 0.791, blue: 0.999, alpha: 1), #colorLiteral(red: 0.832, green: 0.887, blue: 0.998, alpha: 1), #colorLiteral(red: 0.791, green: 0.941, blue: 0.999, alpha: 1)],
 			[#colorLiteral(red: 0.799, green: 0.912, blue: 0.711, alpha: 1), #colorLiteral(red: 0.950, green: 0.964, blue: 0.720, alpha: 1), #colorLiteral(red: 1.000, green: 0.979, blue: 0.726, alpha: 1), #colorLiteral(red: 1.000, green: 0.893, blue: 0.664, alpha: 1), #colorLiteral(red: 0.999, green: 0.851, blue: 0.660, alpha: 1), #colorLiteral(red: 1.000, green: 0.772, blue: 0.672, alpha: 1), #colorLiteral(red: 0.996, green: 0.713, blue: 0.682, alpha: 1), #colorLiteral(red: 0.958, green: 0.638, blue: 0.753, alpha: 1), #colorLiteral(red: 0.890, green: 0.576, blue: 0.996, alpha: 1), #colorLiteral(red: 0.693, green: 0.549, blue: 0.995, alpha: 1), #colorLiteral(red: 0.657, green: 0.777, blue: 0.998, alpha: 1), #colorLiteral(red: 0.584, green: 0.890, blue: 0.992, alpha: 1)],
@@ -180,7 +183,7 @@ extension DSFColorPickerUI {
 			}
 		}
 
-		return DSFColorPickerTheme(name: "Preview", colors: colors)
+		return DSFColorPickerPalette(name: "Preview", colors: colors)
 	}()
 
 }

@@ -79,7 +79,7 @@ Configurable using a 2d array of colors, for example
 [Full size](https://dagronf.github.io/art/projects/DSFColorPicker/default.png)
 
 ```swift
-	let theme = DSFColorPickerTheme(name: "default", argbValueGrid: [
+	let theme = DSFColorPickerTheme(name: "My Colors", argbValueGrid: [
 		[0xF5402C, 0xEB1360, 0x9C1BB1, 0x6634B8, 0x3D4DB7],
 		[0x47AE4A, 0x009687, 0x01BBD5, 0x00A6F6, 0x0C93F5],
 		[0x89C43F, 0xCCDD1E, 0xFFEC17, 0xFEC001, 0xFF9800],

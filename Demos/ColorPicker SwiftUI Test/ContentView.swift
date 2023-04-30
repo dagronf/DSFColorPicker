@@ -12,6 +12,7 @@ import DSFColorPicker
 struct ContentView: View {
 	@State var selectedColor: Color = .red
 	@State var selectedColor2: Color = .green
+	@State var selectedGray: Color = .gray
 
 	var body: some View {
 		VStack {
@@ -34,8 +35,6 @@ struct ContentView: View {
 							DSFColorPickerUI(
 								named: "all-components",
 								theme: customTheme,
-//								cellSize: CGSize(width: 16, height: 16),
-//								spacing: 1,
 								displaySettings: [.colorDropper, .colorPicker, .current, .palettes, .recents, .titles],
 								selectedColor: $selectedColor
 							)
@@ -66,6 +65,14 @@ struct ContentView: View {
 						selectedColor: $selectedColor2
 					)
 				}
+
+				Divider()
+
+				DSFColorPickerUI(
+					named: "gray16",
+					theme: gray16Theme,
+					selectedColor: $selectedGray
+				)
 			}
 		}
 		.padding()

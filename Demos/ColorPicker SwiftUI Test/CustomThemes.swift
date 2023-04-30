@@ -51,6 +51,19 @@ let basicColorTheme: DSFColorPickerTheme = {
 	)
 }()
 
+let gray16Theme: DSFColorPickerTheme = {
+	DSFColorPickerTheme(
+		palette: DSFColorPickerPalette(
+			name: "Gray16",
+			colors: [
+				[ #colorLiteral(red: 0.000, green: 0.000, blue: 0.000, alpha: 1.000), #colorLiteral(red: 0.094, green: 0.094, blue: 0.094, alpha: 1.000), #colorLiteral(red: 0.157, green: 0.157, blue: 0.157, alpha: 1.000), #colorLiteral(red: 0.220, green: 0.220, blue: 0.220, alpha: 1.000) ],
+				[ #colorLiteral(red: 0.278, green: 0.278, blue: 0.278, alpha: 1.000), #colorLiteral(red: 0.337, green: 0.337, blue: 0.337, alpha: 1.000), #colorLiteral(red: 0.392, green: 0.392, blue: 0.392, alpha: 1.000), #colorLiteral(red: 0.443, green: 0.443, blue: 0.443, alpha: 1.000) ],
+				[ #colorLiteral(red: 0.494, green: 0.494, blue: 0.494, alpha: 1.000), #colorLiteral(red: 0.549, green: 0.549, blue: 0.549, alpha: 1.000), #colorLiteral(red: 0.608, green: 0.608, blue: 0.608, alpha: 1.000), #colorLiteral(red: 0.671, green: 0.671, blue: 0.671, alpha: 1.000) ],
+				[ #colorLiteral(red: 0.741, green: 0.741, blue: 0.741, alpha: 1.000), #colorLiteral(red: 0.820, green: 0.820, blue: 0.820, alpha: 1.000), #colorLiteral(red: 0.906, green: 0.906, blue: 0.906, alpha: 1.000), #colorLiteral(red: 1.000, green: 1.000, blue: 1.000, alpha: 1.000) ]
+			]
+		)
+	)
+}()
 
 let miniColorTheme: DSFColorPickerTheme = {
 	DSFColorPickerTheme(palette: DSFColorPickerPalette(

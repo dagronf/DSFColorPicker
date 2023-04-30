@@ -339,6 +339,7 @@ extension DSFColorPickerView {
 				CATransaction.commit()
 			}
 			hStack.addArrangedSubview(c)
+			self.colorPanelButton = c
 		}
 
 		return hStack

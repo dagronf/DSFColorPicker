@@ -117,6 +117,9 @@ import Cocoa
 			self.selectedColorButton?.color = self.selectedColor
 			self.selectedColorButton?.isEnabled = self.selectedColor != nil
 
+			/// If the color panel button is visible, push the change through to it too
+			self.colorPanelButton?.selectedColor = selectedColor ?? .clear
+
 			/// Callback if one is defined
 			self.colorSelectedCallback?(self.selectedColor)
 
@@ -144,6 +147,9 @@ import Cocoa
 
 	///
 	var allColorButtons: [DSFColorPickerButton] = []
+
+	/// If the control has 'show color panel' set, the button
+	var colorPanelButton: ColorPanelButton?
 
 	/// The recents userDefaults keys
 	internal var recentsUserDefaultsKey: String?

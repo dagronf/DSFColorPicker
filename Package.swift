@@ -14,7 +14,7 @@ let package = Package(
 			targets: ["DSFColorPicker"]),
 	],
 	dependencies: [
-		.package(url: "https://github.com/dagronf/DSFColorSampler", from: "3.0.0"),
+		.package(url: "https://github.com/dagronf/DSFColorSampler", .upToNextMinor(from: "3.0.0")),
 		.package(url: "https://github.com/dagronf/DSFAppearanceManager", .upToNextMinor(from: "3.5.0"))
 	],
 	targets: [

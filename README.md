@@ -149,30 +149,12 @@ Dynamically adjusts to high-contrast display modes
 * High contrast support
 * VoiceOver reads out 'named' color views as they are interacted with ("<name> Color Selector")
 
-# Changes
-
-## `3.0.0`
-
-* SwiftUI support
-
-## `2.0.0`
-
-* Updated the package to depend on the [`DSFColorSampler`](https://github.com/dagronf/DSFColorSampler) package instead of embedding an older version of the source.
-
-* Removed 'direct' method of installing as the SPM package now depends on `DSFColorSampler`.
-
-## `1.2.0`
-
-* Fixed a compile bug when archiving ([Github issue tracker](https://github.com/dagronf/DSFColorPicker/issues/1))
-
 # License
-
-MIT. Use it for anything you want, just attribute my work. Let me know if you do use it somewhere, I'd love to hear about it!
 
 ```
 MIT License
 
-Copyright (c) 2023 Darren Ford
+Copyright (c) 2024 Darren Ford
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
